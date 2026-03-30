@@ -1,0 +1,3 @@
+[workspace]
+members = ["naive", "segmented", "segmented_wheel235", "wheel235"]
+resolver = "3"
