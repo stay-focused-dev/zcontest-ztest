@@ -13,7 +13,7 @@ gcc -O3 -march=native -fwrapv -pipe -o original/solution original/main.c
 ## Correctness
 
 ```sh
-$ original/solution | md5sum
+$ original/solution 2>/dev/null | md5sum
 b197ddca5540e6e611fec0945e3d5573  -
 ```
 
