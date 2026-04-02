@@ -38,7 +38,6 @@ sieve: 2952.2 ms, lookup: 701.0 ms, total: 3653.2 ms
 
        3.068530000 seconds user
        0.678552000 seconds sys
-
 ```
 
 ## Cache counters
