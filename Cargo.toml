@@ -1,3 +1,3 @@
 [workspace]
-members = ["naive", "segmented", "segmented_wheel235", "segmented_wheel235_div", "wheel235"]
+members = ["naive", "segmented", "segmented_wheel235", "segmented_wheel235_div", "unrolled", "wheel235"]
 resolver = "3"

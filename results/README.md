@@ -9,6 +9,7 @@
 | wheel235                 |  3.238 s ± 0.015 s  |  3.8×    |  1.456 s ± 0.022 s  |  6.2×    |
 | segmented_wheel235       |  1.434 s ± 0.001 s  |  8.6×    |  0.800 s ± 0.010 s  | 11.2×    |
 | segmented_wheel235_div   |  1.194 s ± 0.002 s  | 10.4×    |  0.703 s ± 0.008 s  | 12.8×    |
+| unrolled                 |  1.025 s ± 0.001 s  | 12.1×    |  0.522 s ± 0.001 s  | 17.2×    |
 | original solution        |  1.067 s ± 0.003 s  | 11.6×    |  0.783 s ± 0.013 s  | 11.5×    |
 
 ## Instructions (Intel i7-6700K, perf stat)
@@ -20,6 +21,7 @@
 | wheel235                 |  5,373,709,937     | 0.4        |
 | segmented_wheel235       | 12,345,354,908     | 2.1        |
 | segmented_wheel235_div   | 11,548,456,260     | 2.4        |
+| unrolled                 |  6,595,805,313     | 1.6        |
 | original solution        |  6,298,807,674     | 1.5        |
 
 ## Cache hit rates (Intel i7-6700K, mem_load_retired.*)
@@ -31,4 +33,5 @@
 | wheel235                 | 76.5 %  |  6.7 %  | 18.0 %  | 260,331,764 |
 | segmented_wheel235       | 89.7 %  | 94.6 %  | 26.5 %  | 10,758,623  |
 | segmented_wheel235_div   | 88.2 %  | 93.9 %  | 21.5 %  | 14,125,204  |
+| unrolled                 | 71.1 %  | 93.4 %  | 18.7 %  | 14,039,594  |
 | original solution        | 60.9 %  | 96.7 %  |  6.3 %  |  9,880,688  |
