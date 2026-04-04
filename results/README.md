@@ -1,18 +1,20 @@
 # Benchmark summary
 
-## Time (hyperfine, mean ± σ)
+## Intel i7-6700K
 
-| variant                  | i7-6700K            | vs naive | Apple M1            | vs naive |
-|--------------------------|---------------------|----------|---------------------|----------|
-| naive                    | 12.400 s ± 0.006 s  | —        |  8.974 s ± 0.181 s  | —        |
-| segmented                |  3.735 s ± 0.002 s  |  3.3×    |  1.687 s ± 0.037 s  |  5.3×    |
-| wheel235                 |  3.238 s ± 0.015 s  |  3.8×    |  1.456 s ± 0.022 s  |  6.2×    |
-| segmented_wheel235       |  1.434 s ± 0.001 s  |  8.6×    |  0.800 s ± 0.010 s  | 11.2×    |
-| segmented_wheel235_div   |  1.194 s ± 0.002 s  | 10.4×    |  0.703 s ± 0.008 s  | 12.8×    |
-| unrolled                 |  1.025 s ± 0.001 s  | 12.1×    |  0.522 s ± 0.001 s  | 17.2×    |
-| original solution        |  1.067 s ± 0.003 s  | 11.6×    |  0.783 s ± 0.013 s  | 11.5×    |
+### Time (hyperfine, mean ± σ)
 
-## Instructions (Intel i7-6700K, perf stat)
+| variant                  | time                | vs naive |
+|--------------------------|---------------------|----------|
+| naive                    | 12.400 s ± 0.006 s  | —        |
+| segmented                |  3.735 s ± 0.002 s  |  3.3×    |
+| wheel235                 |  3.238 s ± 0.015 s  |  3.8×    |
+| segmented_wheel235       |  1.434 s ± 0.001 s  |  8.6×    |
+| segmented_wheel235_div   |  1.194 s ± 0.002 s  | 10.4×    |
+| unrolled                 |  1.025 s ± 0.001 s  | 12.1×    |
+| original solution        |  1.067 s ± 0.003 s  | 11.6×    |
+
+### Instructions (perf stat)
 
 | variant                  | instructions       | insn/cycle |
 |--------------------------|--------------------|------------|
@@ -24,7 +26,7 @@
 | unrolled                 |  6,595,805,313     | 1.6        |
 | original solution        |  6,298,807,674     | 1.5        |
 
-## Cache hit rates (Intel i7-6700K, mem_load_retired.*)
+### Cache hit rates (mem_load_retired.*)
 
 | variant                  | L1 hit  | L2 hit  | LLC hit | L3 miss     |
 |--------------------------|---------|---------|---------|-------------|
@@ -35,3 +37,17 @@
 | segmented_wheel235_div   | 88.2 %  | 93.9 %  | 21.5 %  | 14,125,204  |
 | unrolled                 | 71.1 %  | 93.4 %  | 18.7 %  | 14,039,594  |
 | original solution        | 60.9 %  | 96.7 %  |  6.3 %  |  9,880,688  |
+
+## Apple M1
+
+### Time (hyperfine, mean ± σ)
+
+| variant                  | time                | vs naive |
+|--------------------------|---------------------|----------|
+| naive                    |  8.974 s ± 0.181 s  | —        |
+| segmented                |  1.687 s ± 0.037 s  |  5.3×    |
+| wheel235                 |  1.456 s ± 0.022 s  |  6.2×    |
+| segmented_wheel235       |  0.800 s ± 0.010 s  | 11.2×    |
+| segmented_wheel235_div   |  0.703 s ± 0.008 s  | 12.8×    |
+| unrolled                 |  0.522 s ± 0.001 s  | 17.2×    |
+| original solution        |  0.783 s ± 0.013 s  | 11.5×    |
