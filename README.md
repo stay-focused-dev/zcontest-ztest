@@ -14,13 +14,17 @@ Output `1` if `a(n)` is prime, `0` otherwise, for n = 1..33333333.
 
 ## Implementations
 
-| variant            | language | description                                      |
-|--------------------|----------|--------------------------------------------------|
-| naive              | Rust     | basic sieve of Eratosthenes                      |
-| segmented          | Rust     | segmented sieve, cache-friendly chunks           |
-| wheel235           | Rust     | wheel factorization mod 30, 8 bits per 30 nums   |
-| segmented_wheel235 | Rust     | wheel mod 30 + segmented, best of both           |
-| original solution  | C        | reference implementation                         |
+| variant              | language | description                                      |
+|----------------------|----------|--------------------------------------------------|
+| naive                | Rust     | basic sieve of Eratosthenes                      |
+| segmented            | Rust     | segmented sieve, cache-friendly chunks           |
+| wheel235             | Rust     | wheel factorization mod 30, 8 bits per 30 nums   |
+| segmented_wheel235   | Rust     | wheel mod 30 + segmented, best of both           |
+| segmented_wheel235_div | Rust   | segmented_wheel235 with division optimization    |
+| unrolled             | Rust     | segmented_wheel235_div with unrolled inner loop  |
+| sw_prefetch          | Rust     | unrolled with software prefetching               |
+| l1_cache             | Rust     | unrolled with L1/L2 cache-aware segmentation     |
+| original solution    | C        | reference implementation                         |
 
 ## How to build
 

@@ -1,3 +1,3 @@
 [workspace]
-members = ["naive", "segmented", "segmented_wheel235", "segmented_wheel235_div", "sw_prefetch", "unrolled", "wheel235"]
+members = ["l1_cache", "l1_cache_find_first_l2_prime","naive", "segmented", "segmented_wheel235", "segmented_wheel235_div", "sw_prefetch", "unrolled", "wheel235"]
 resolver = "3"
