@@ -16,8 +16,8 @@ fn naive_sieve(n: usize) -> impl Fn(usize) -> bool {
         }
 
         let step = 2 * p;
-        for v in (p * p..n).step_by(step) {
-            sieve[v] = true;
+        for i in (p * p..n).step_by(step) {
+            sieve[i] = true;
         }
     }
 
@@ -37,10 +37,7 @@ fn unrolled_sieve(n: usize) -> impl Fn(usize) -> bool {
         bit_mask[r] = 1 << i;
     }
 
-    let mut resume_state: Vec<_> = small_primes
-        .iter()
-        .map(|&p| (p * p / WHEEL_SIZE, 0))
-        .collect();
+    let mut resume_state: Vec<_> = small_primes.iter().map(|&p| (p * p / WHEEL_SIZE, 0)).collect();
 
     sieve[0] |= bit_mask[1];
     for chunk_start in (0..sieve_len).step_by(CHUNK) {

@@ -16,8 +16,8 @@ fn naive_sieve(n: usize) -> impl Fn(usize) -> bool {
         }
 
         let step = 2 * p;
-        for v in (p * p..n).step_by(step) {
-            sieve[v] = true;
+        for i in (p * p..n).step_by(step) {
+            sieve[i] = true;
         }
     }
 
