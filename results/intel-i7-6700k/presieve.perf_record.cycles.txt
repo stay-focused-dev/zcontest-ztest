@@ -1,0 +1,2137 @@
+ Percent |	Source code & Disassembly of presieve for cpu/cycles/Pu (2962 samples, percent: local period)
+-------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3     Disassembly of section .text:
+         :
+         : 5     0000000000017430 <presieve::main>:
+         : 6     }
+         :
+         : 8     sieve
+         : 9     }
+         :
+         : 11    fn main() -> io::Result<()> {
+    0.00 :   17430:  push   rbp
+    0.00 :   17431:  push   r15
+    0.00 :   17433:  push   r14
+    0.00 :   17435:  push   r13
+    0.00 :   17437:  push   r12
+    0.00 :   17439:  push   rbx
+    0.00 :   1743a:  sub    rsp,0x118
+         : 19    let out = io::stdout();
+    0.00 :   17441:  call   QWORD PTR [rip+0x4a161]        # 615a8 <_DYNAMIC+0x260>
+    0.00 :   17447:  mov    QWORD PTR [rsp+0x110],rax
+    0.00 :   1744f:  lea    rdi,[rsp+0x110]
+         : 23    let mut out = BufWriter::with_capacity(65_536, out.lock());
+    0.00 :   17457:  call   QWORD PTR [rip+0x4a153]        # 615b0 <_DYNAMIC+0x268>
+    0.00 :   1745d:  mov    rbx,rax
+    0.00 :   17460:  call   QWORD PTR [rip+0x4a152]        # 615b8 <_DYNAMIC+0x270>
+    0.00 :   17466:  mov    edi,0x10000
+    0.00 :   1746b:  mov    esi,0x1
+    0.00 :   17470:  call   QWORD PTR [rip+0x4a14a]        # 615c0 <_DYNAMIC+0x278>
+    0.00 :   17476:  test   rax,rax
+    0.00 :   17479:  je     19187 <presieve::main+0x1d57>
+    0.00 :   1747f:  mov    QWORD PTR [rsp+0xb8],0x10000
+    0.00 :   1748b:  mov    QWORD PTR [rsp+0xc0],rax
+    0.00 :   17493:  mov    QWORD PTR [rsp+0xc8],0x0
+    0.00 :   1749f:  mov    BYTE PTR [rsp+0xd0],0x0
+    0.00 :   174a7:  mov    QWORD PTR [rsp+0xd8],rbx
+         :
+         : 38    let t_start = std::time::Instant::now();
+    0.00 :   174af:  call   QWORD PTR [rip+0x4a113]        # 615c8 <_DYNAMIC+0x280>
+    0.00 :   174b5:  mov    QWORD PTR [rsp+0x60],rax
+    0.00 :   174ba:  mov    DWORD PTR [rsp+0x2c],edx
+    0.00 :   174be:  call   QWORD PTR [rip+0x4a0f4]        # 615b8 <_DYNAMIC+0x270>
+    0.00 :   174c4:  mov    edi,0x4279
+    0.00 :   174c9:  mov    esi,0x1
+    0.00 :   174ce:  call   QWORD PTR [rip+0x4a0fc]        # 615d0 <_DYNAMIC+0x288>
+    0.00 :   174d4:  test   rax,rax
+    0.00 :   174d7:  je     19199 <presieve::main+0x1d69>
+    0.00 :   174dd:  mov    r14,rax
+    0.00 :   174e0:  mov    r10d,0x7
+    0.00 :   174e6:  mov    ecx,0xe
+    0.00 :   174eb:  movabs rbp,0x8888888888888889
+    0.00 :   174f5:  lea    r9,[rip+0xffffffffffff1a98]        # 8f94 <GCC_except_table365+0x2d0>
+    0.00 :   174fc:  jmp    17508 <presieve::main+0xd8>
+    0.00 :   174fe:  xchg   ax,ax
+    0.00 :   17500:  add    rcx,0xe
+    0.00 :   17504:  add    r10,0xe
+    0.00 :   17508:  lea    rsi,[rcx-0x7]
+    0.00 :   1750c:  mov    rdx,r10
+    0.00 :   1750f:  mulx   rdx,rdx,rbp
+    0.00 :   17514:  shr    rdx,0x4
+    0.00 :   17518:  imul   r8,rdx,0xffffffffffffffe2
+    0.00 :   1751c:  add    r8,r9
+    0.00 :   1751f:  mov    rdx,rcx
+    0.00 :   17522:  mulx   rdi,rdi,rbp
+         : 65    let b = i / WHEEL_SIZE;
+    0.00 :   17527:  mov    rdx,rsi
+    0.00 :   1752a:  mulx   rdx,rdx,rbp
+         : 68    if BIT_MASK[r] > 0 {
+    0.00 :   1752f:  movzx  esi,BYTE PTR [rcx+r8*1-0x7]
+    0.00 :   17535:  test   sil,sil
+    0.00 :   17538:  je     17542 <presieve::main+0x112>
+    0.00 :   1753a:  shr    rdx,0x4
+         : 73    sieve[b] |= BIT_MASK[r];
+    0.00 :   1753e:  or     BYTE PTR [r14+rdx*1],sil
+    0.00 :   17542:  cmp    rcx,0x7ca2e
+    0.00 :   17549:  je     17572 <presieve::main+0x142>
+    0.00 :   1754b:  shr    rdi,0x4
+    0.00 :   1754f:  imul   rsi,rdi,0xffffffffffffffe2
+         : 79    let b = i / WHEEL_SIZE;
+    0.00 :   17553:  mov    rdx,rcx
+    0.00 :   17556:  mulx   rdx,rdx,rbp
+         : 82    if BIT_MASK[r] > 0 {
+    0.00 :   1755b:  add    rsi,rcx
+    0.01 :   1755e:  movzx  esi,BYTE PTR [r9+rsi*1]
+    0.00 :   17563:  test   sil,sil
+    0.00 :   17566:  je     17500 <presieve::main+0xd0>
+    0.00 :   17568:  shr    rdx,0x4
+         : 88    sieve[b] |= BIT_MASK[r];
+    0.00 :   1756c:  or     BYTE PTR [r14+rdx*1],sil
+    0.00 :   17570:  jmp    17500 <presieve::main+0xd0>
+    0.00 :   17572:  mov    r10d,0xb
+    0.00 :   17578:  mov    ecx,0x16
+    0.00 :   1757d:  jmp    17588 <presieve::main+0x158>
+    0.00 :   1757f:  nop
+    0.00 :   17580:  add    rcx,0x16
+    0.00 :   17584:  add    r10,0x16
+    0.00 :   17588:  lea    rsi,[rcx-0xb]
+    0.00 :   1758c:  mov    rdx,r10
+    0.00 :   1758f:  mulx   rdx,rdx,rbp
+    0.00 :   17594:  shr    rdx,0x4
+    0.00 :   17598:  imul   r8,rdx,0xffffffffffffffe2
+    0.00 :   1759c:  add    r8,r9
+    0.00 :   1759f:  mov    rdx,rcx
+    0.00 :   175a2:  mulx   rdi,rdi,rbp
+         : 105   let b = i / WHEEL_SIZE;
+    0.00 :   175a7:  mov    rdx,rsi
+    0.00 :   175aa:  mulx   rdx,rdx,rbp
+         : 108   if BIT_MASK[r] > 0 {
+    0.00 :   175af:  movzx  esi,BYTE PTR [rcx+r8*1-0xb]
+    0.00 :   175b5:  test   sil,sil
+    0.00 :   175b8:  je     175c2 <presieve::main+0x192>
+    0.00 :   175ba:  shr    rdx,0x4
+         : 113   sieve[b] |= BIT_MASK[r];
+    0.01 :   175be:  or     BYTE PTR [r14+rdx*1],sil
+    0.00 :   175c2:  cmp    rcx,0x7ca2e
+    0.00 :   175c9:  je     175f2 <presieve::main+0x1c2>
+    0.00 :   175cb:  shr    rdi,0x4
+    0.00 :   175cf:  imul   rsi,rdi,0xffffffffffffffe2
+         : 119   let b = i / WHEEL_SIZE;
+    0.00 :   175d3:  mov    rdx,rcx
+    0.00 :   175d6:  mulx   rdx,rdx,rbp
+         : 122   if BIT_MASK[r] > 0 {
+    0.00 :   175db:  add    rsi,rcx
+    0.00 :   175de:  movzx  esi,BYTE PTR [r9+rsi*1]
+    0.00 :   175e3:  test   sil,sil
+    0.00 :   175e6:  je     17580 <presieve::main+0x150>
+    0.00 :   175e8:  shr    rdx,0x4
+         : 128   sieve[b] |= BIT_MASK[r];
+    0.00 :   175ec:  or     BYTE PTR [r14+rdx*1],sil
+    0.00 :   175f0:  jmp    17580 <presieve::main+0x150>
+    0.00 :   175f2:  mov    r10d,0xd
+    0.00 :   175f8:  mov    ecx,0x1a
+    0.00 :   175fd:  jmp    17608 <presieve::main+0x1d8>
+    0.00 :   175ff:  nop
+    0.00 :   17600:  add    rcx,0x1a
+    0.00 :   17604:  add    r10,0x1a
+    0.00 :   17608:  lea    rsi,[rcx-0xd]
+    0.00 :   1760c:  mov    rdx,r10
+    0.00 :   1760f:  mulx   rdx,rdx,rbp
+    0.00 :   17614:  shr    rdx,0x4
+    0.00 :   17618:  imul   r8,rdx,0xffffffffffffffe2
+    0.00 :   1761c:  add    r8,r9
+    0.00 :   1761f:  mov    rdx,rcx
+    0.00 :   17622:  mulx   rdi,rdi,rbp
+         : 145   let b = i / WHEEL_SIZE;
+    0.00 :   17627:  mov    rdx,rsi
+    0.00 :   1762a:  mulx   rdx,rdx,rbp
+         : 148   if BIT_MASK[r] > 0 {
+    0.00 :   1762f:  movzx  esi,BYTE PTR [rcx+r8*1-0xd]
+    0.00 :   17635:  test   sil,sil
+    0.00 :   17638:  je     17642 <presieve::main+0x212>
+    0.00 :   1763a:  shr    rdx,0x4
+         : 153   sieve[b] |= BIT_MASK[r];
+    0.00 :   1763e:  or     BYTE PTR [r14+rdx*1],sil
+    0.00 :   17642:  cmp    rcx,0x7ca2e
+    0.00 :   17649:  je     17672 <presieve::main+0x242>
+    0.00 :   1764b:  shr    rdi,0x4
+    0.00 :   1764f:  imul   rsi,rdi,0xffffffffffffffe2
+         : 159   let b = i / WHEEL_SIZE;
+    0.00 :   17653:  mov    rdx,rcx
+    0.00 :   17656:  mulx   rdx,rdx,rbp
+         : 162   if BIT_MASK[r] > 0 {
+    0.00 :   1765b:  add    rsi,rcx
+    0.01 :   1765e:  movzx  esi,BYTE PTR [r9+rsi*1]
+    0.00 :   17663:  test   sil,sil
+    0.00 :   17666:  je     17600 <presieve::main+0x1d0>
+    0.00 :   17668:  shr    rdx,0x4
+         : 168   sieve[b] |= BIT_MASK[r];
+    0.00 :   1766c:  or     BYTE PTR [r14+rdx*1],sil
+    0.00 :   17670:  jmp    17600 <presieve::main+0x1d0>
+    0.00 :   17672:  mov    r10d,0x11
+    0.00 :   17678:  mov    ecx,0x22
+    0.00 :   1767d:  jmp    17688 <presieve::main+0x258>
+    0.00 :   1767f:  nop
+    0.00 :   17680:  add    rcx,0x22
+    0.00 :   17684:  add    r10,0x22
+    0.00 :   17688:  lea    rsi,[rcx-0x11]
+    0.00 :   1768c:  mov    rdx,r10
+    0.00 :   1768f:  mulx   rdx,rdx,rbp
+    0.00 :   17694:  shr    rdx,0x4
+    0.00 :   17698:  imul   r8,rdx,0xffffffffffffffe2
+    0.00 :   1769c:  add    r8,r9
+    0.00 :   1769f:  mov    rdx,rcx
+    0.00 :   176a2:  mulx   rdi,rdi,rbp
+         : 185   let b = i / WHEEL_SIZE;
+    0.00 :   176a7:  mov    rdx,rsi
+    0.00 :   176aa:  mulx   rdx,rdx,rbp
+         : 188   if BIT_MASK[r] > 0 {
+    0.00 :   176af:  movzx  esi,BYTE PTR [rcx+r8*1-0x11]
+    0.00 :   176b5:  test   sil,sil
+    0.00 :   176b8:  je     176c2 <presieve::main+0x292>
+    0.00 :   176ba:  shr    rdx,0x4
+         : 193   sieve[b] |= BIT_MASK[r];
+    0.00 :   176be:  or     BYTE PTR [r14+rdx*1],sil
+    0.00 :   176c2:  cmp    rcx,0x7ca2e
+    0.00 :   176c9:  je     176f2 <presieve::main+0x2c2>
+    0.00 :   176cb:  shr    rdi,0x4
+    0.00 :   176cf:  imul   rsi,rdi,0xffffffffffffffe2
+         : 199   let b = i / WHEEL_SIZE;
+    0.00 :   176d3:  mov    rdx,rcx
+    0.00 :   176d6:  mulx   rdx,rdx,rbp
+         : 202   if BIT_MASK[r] > 0 {
+    0.00 :   176db:  add    rsi,rcx
+    0.00 :   176de:  movzx  esi,BYTE PTR [r9+rsi*1]
+    0.00 :   176e3:  test   sil,sil
+    0.00 :   176e6:  je     17680 <presieve::main+0x250>
+    0.00 :   176e8:  shr    rdx,0x4
+         : 208   sieve[b] |= BIT_MASK[r];
+    0.00 :   176ec:  or     BYTE PTR [r14+rdx*1],sil
+    0.00 :   176f0:  jmp    17680 <presieve::main+0x250>
+    0.00 :   176f2:  mov    r13,rax
+    0.00 :   176f5:  call   QWORD PTR [rip+0x49ebd]        # 615b8 <_DYNAMIC+0x270>
+    0.00 :   176fb:  mov    edi,0x4444445
+    0.00 :   17700:  mov    esi,0x1
+    0.00 :   17705:  call   QWORD PTR [rip+0x49ec5]        # 615d0 <_DYNAMIC+0x288>
+    0.00 :   1770b:  test   rax,rax
+    0.00 :   1770e:  je     191ab <presieve::main+0x1d7b>
+    0.00 :   17714:  mov    rbx,rax
+    0.00 :   17717:  mov    QWORD PTR [rsp+0x40],0x11
+    0.00 :   17720:  call   QWORD PTR [rip+0x49e92]        # 615b8 <_DYNAMIC+0x270>
+    0.00 :   17726:  mov    edi,0xb505
+    0.00 :   1772b:  mov    esi,0x1
+    0.00 :   17730:  call   QWORD PTR [rip+0x49e9a]        # 615d0 <_DYNAMIC+0x288>
+    0.00 :   17736:  test   rax,rax
+    0.00 :   17739:  je     191bd <presieve::main+0x1d8d>
+    0.00 :   1773f:  mov    r12,rax
+         : 227   sieve[1] = true;
+    0.00 :   17742:  mov    BYTE PTR [rax+0x1],0x1
+    0.00 :   17746:  mov    rcx,rax
+    0.00 :   17749:  add    rcx,0x9
+    0.00 :   1774d:  mov    esi,0x3
+    0.00 :   17752:  mov    r8d,0x5a81
+    0.00 :   17758:  mov    r11d,0x10
+    0.00 :   1775e:  mov    r9d,0x6
+    0.00 :   17764:  mov    r10d,0x9
+    0.00 :   1776a:  jmp    1778a <presieve::main+0x35a>
+    0.00 :   1776c:  nop    DWORD PTR [rax+0x0]
+    0.00 :   17770:  add    rsi,0x2
+    0.00 :   17774:  dec    r8
+    0.00 :   17777:  add    r10,r11
+    0.00 :   1777a:  add    rcx,r11
+    0.00 :   1777d:  add    r11,0x8
+    0.00 :   17781:  add    r9,0x4
+    0.00 :   17785:  test   r8,r8
+    0.00 :   17788:  je     177df <presieve::main+0x3af>
+         : 246   if sieve[p] {
+    0.00 :   1778a:  cmp    BYTE PTR [r12+rsi*1],0x1
+    0.00 :   1778f:  je     17770 <presieve::main+0x340>
+         : 249   for i in (p * p..n).step_by(step) {
+    0.00 :   17791:  mov    rax,rsi
+    0.00 :   17794:  imul   rax,rsi
+    0.00 :   17798:  mov    edx,0xb505
+    0.00 :   1779d:  sub    rdx,rax
+    0.00 :   177a0:  mov    eax,0x0
+    0.00 :   177a5:  cmovae rax,rdx
+    0.00 :   177a9:  lea    edi,[rsi+rsi*1]
+    0.00 :   177ac:  xor    edx,edx
+    0.00 :   177ae:  div    edi
+    0.00 :   177b0:  xor    r15d,r15d
+    0.00 :   177b3:  test   edx,edx
+    0.00 :   177b5:  setne  r15b
+    0.00 :   177b9:  add    r15,rax
+    0.01 :   177bc:  je     17770 <presieve::main+0x340>
+    0.00 :   177be:  xor    eax,eax
+    0.00 :   177c0:  lea    rdi,[r10+rax*1]
+    0.00 :   177c4:  cmp    rdi,0xb504
+    0.00 :   177cb:  ja     18d39 <presieve::main+0x1909>
+         : 268   sieve[i] = true;
+    0.00 :   177d1:  mov    BYTE PTR [rcx+rax*1],0x1
+    0.00 :   177d5:  add    rax,r9
+    0.00 :   177d8:  dec    r15
+    0.00 :   177db:  jne    177c0 <presieve::main+0x390>
+    0.00 :   177dd:  jmp    17770 <presieve::main+0x340>
+         : 274   move |a| a == 2 || (a % 2 != 0 && !sieve[a])
+    0.00 :   177df:  mov    QWORD PTR [rsp+0x48],0xb505
+    0.00 :   177e8:  mov    QWORD PTR [rsp+0x50],r12
+    0.00 :   177ed:  mov    QWORD PTR [rsp+0x58],0xb505
+    0.00 :   177f6:  lea    rax,[rsp+0x40]
+    0.00 :   177fb:  mov    QWORD PTR [rsp+0x90],rax
+    0.00 :   17803:  mov    QWORD PTR [rsp+0x98],0x3
+    0.00 :   1780f:  mov    QWORD PTR [rsp+0xa0],0x5a81
+    0.00 :   1781b:  mov    QWORD PTR [rsp+0xa8],0x1
+    0.00 :   17827:  mov    BYTE PTR [rsp+0xb0],0x1
+    0.00 :   1782f:  lea    rax,[rsp+0x48]
+    0.00 :   17834:  mov    QWORD PTR [rsp+0x88],rax
+    0.00 :   1783c:  lea    rdi,[rsp+0xe0]
+    0.00 :   17844:  lea    rsi,[rsp+0x88]
+    0.00 :   1784c:  call   19330 <<alloc::vec::Vec<T> as alloc::vec::spec_from_iter_nested::SpecFromIterNested<T,I>>::from_iter>
+    0.00 :   17851:  mov    rsi,QWORD PTR [rsp+0x48]
+    0.00 :   17856:  test   rsi,rsi
+    0.00 :   17859:  je     1786b <presieve::main+0x43b>
+    0.00 :   1785b:  mov    rdi,QWORD PTR [rsp+0x50]
+    0.00 :   17860:  mov    edx,0x1
+    0.00 :   17865:  call   QWORD PTR [rip+0x49d2d]        # 61598 <_DYNAMIC+0x250>
+    0.00 :   1786b:  mov    rax,QWORD PTR [rsp+0xe8]
+    0.00 :   17873:  mov    QWORD PTR [rsp],rax
+    0.00 :   17877:  mov    rax,QWORD PTR [rsp+0xf0]
+    0.00 :   1787f:  lea    r15,[rax*8+0x0]
+    0.00 :   17887:  mov    QWORD PTR [rsp+0x20],rax
+    0.00 :   1788c:  test   rax,rax
+    0.00 :   1788f:  mov    QWORD PTR [rsp+0x8],r15
+    0.00 :   17894:  je     178d2 <presieve::main+0x4a2>
+    0.00 :   17896:  call   QWORD PTR [rip+0x49d1c]        # 615b8 <_DYNAMIC+0x270>
+    0.00 :   1789c:  mov    esi,0x4
+    0.00 :   178a1:  mov    rdi,r15
+    0.00 :   178a4:  call   QWORD PTR [rip+0x49d16]        # 615c0 <_DYNAMIC+0x278>
+    0.00 :   178aa:  test   rax,rax
+    0.00 :   178ad:  je     191cf <presieve::main+0x1d9f>
+    0.00 :   178b3:  mov    r11,rax
+    0.00 :   178b6:  movabs rcx,0xffff00000000
+    0.00 :   178c0:  mov    rsi,QWORD PTR [rsp+0x20]
+    0.00 :   178c5:  cmp    rsi,0x1
+    0.00 :   178c9:  jne    178e2 <presieve::main+0x4b2>
+    0.00 :   178cb:  xor    eax,eax
+    0.00 :   178cd:  jmp    17983 <presieve::main+0x553>
+    0.00 :   178d2:  mov    r11d,0x4
+    0.00 :   178d8:  mov    r9,QWORD PTR [rsp+0x20]
+    0.00 :   178dd:  jmp    179d2 <presieve::main+0x5a2>
+    0.00 :   178e2:  and    rsi,0xfffffffffffffffe
+    0.00 :   178e6:  xor    eax,eax
+    0.00 :   178e8:  mov    r10,QWORD PTR [rsp]
+    0.00 :   178ec:  mov    r15,r11
+    0.00 :   178ef:  nop
+    0.00 :   178f0:  mov    rdx,QWORD PTR [r10+rax*8]
+         : 325   let r = p % WHEEL_SIZE;
+    0.00 :   178f4:  mulx   rdi,rdi,rbp
+    0.00 :   178f9:  shr    rdi,0x4
+    0.00 :   178fd:  mov    r8d,edi
+    0.00 :   17900:  shl    r8d,0x5
+    0.00 :   17904:  lea    r9d,[rdi+rdi*1]
+    0.00 :   17908:  sub    r9d,r8d
+    0.00 :   1790b:  add    r9d,edx
+         : 333   let b = p * p / WHEEL_SIZE;
+    0.00 :   1790e:  imul   rdx,rdx
+    0.00 :   17912:  mulx   rdx,rdx,rbp
+    0.00 :   17917:  shr    rdx,0x4
+         : 337   let data = primes.iter().map(|p| ResumeItem::from_prime(*p)).collect();
+    0.00 :   1791b:  shl    r9,0x30
+    0.00 :   1791f:  shl    rdi,0x20
+    0.00 :   17923:  and    rdi,rcx
+    0.00 :   17926:  or     rdi,r9
+    0.00 :   17929:  mov    edx,edx
+    0.00 :   1792b:  or     rdx,rdi
+    0.00 :   1792e:  mov    QWORD PTR [r15+rax*8],rdx
+    0.00 :   17932:  mov    rdx,QWORD PTR [r10+rax*8+0x8]
+         : 346   let r = p % WHEEL_SIZE;
+    0.00 :   17937:  mulx   rdi,rdi,rbp
+    0.00 :   1793c:  shr    rdi,0x4
+    0.00 :   17940:  mov    r8d,edi
+    0.00 :   17943:  shl    r8d,0x5
+    0.00 :   17947:  lea    r9d,[rdi+rdi*1]
+    0.00 :   1794b:  sub    r9d,r8d
+    0.00 :   1794e:  add    r9d,edx
+         : 354   let b = p * p / WHEEL_SIZE;
+    0.00 :   17951:  imul   rdx,rdx
+    0.00 :   17955:  mulx   rdx,rdx,rbp
+    0.00 :   1795a:  shr    rdx,0x4
+         : 358   let data = primes.iter().map(|p| ResumeItem::from_prime(*p)).collect();
+    0.00 :   1795e:  shl    r9,0x30
+    0.00 :   17962:  shl    rdi,0x20
+    0.00 :   17966:  and    rdi,rcx
+    0.00 :   17969:  or     rdi,r9
+    0.00 :   1796c:  mov    edx,edx
+    0.00 :   1796e:  or     rdx,rdi
+    0.00 :   17971:  mov    QWORD PTR [r15+rax*8+0x8],rdx
+    0.00 :   17976:  add    rax,0x2
+    0.00 :   1797a:  cmp    rsi,rax
+    0.00 :   1797d:  jne    178f0 <presieve::main+0x4c0>
+    0.00 :   17983:  mov    r9,QWORD PTR [rsp+0x20]
+    0.00 :   17988:  test   r9b,0x1
+    0.00 :   1798c:  je     179d2 <presieve::main+0x5a2>
+    0.00 :   1798e:  mov    rdx,QWORD PTR [rsp]
+    0.00 :   17992:  mov    rdx,QWORD PTR [rdx+rax*8]
+         : 374   let r = p % WHEEL_SIZE;
+    0.00 :   17996:  mulx   rsi,rsi,rbp
+    0.00 :   1799b:  shr    rsi,0x4
+    0.00 :   1799f:  mov    edi,esi
+    0.00 :   179a1:  shl    edi,0x5
+    0.00 :   179a4:  lea    r8d,[rsi+rsi*1]
+    0.00 :   179a8:  sub    r8d,edi
+    0.00 :   179ab:  add    r8d,edx
+         : 382   let b = p * p / WHEEL_SIZE;
+    0.00 :   179ae:  imul   rdx,rdx
+    0.00 :   179b2:  mulx   rdx,rdx,rbp
+    0.00 :   179b7:  shr    rdx,0x4
+         : 386   let data = primes.iter().map(|p| ResumeItem::from_prime(*p)).collect();
+    0.00 :   179bb:  shl    r8,0x30
+    0.00 :   179bf:  shl    rsi,0x20
+    0.00 :   179c3:  and    rsi,rcx
+    0.00 :   179c6:  or     rsi,r8
+    0.00 :   179c9:  mov    ecx,edx
+    0.00 :   179cb:  or     rcx,rsi
+    0.00 :   179ce:  mov    QWORD PTR [r11+rax*8],rcx
+    0.00 :   179d2:  mov    r10,r13
+    0.00 :   179d5:  mov    QWORD PTR [rsp+0x10],r11
+    0.00 :   179da:  lea    rax,[r11+r9*8]
+    0.00 :   179de:  mov    QWORD PTR [rsp+0xf8],rax
+    0.00 :   179e6:  add    r10,0x60
+    0.00 :   179ea:  mov    rax,rbx
+    0.00 :   179ed:  add    rax,0x60
+    0.00 :   179f1:  mov    QWORD PTR [rsp+0x80],rax
+    0.00 :   179f9:  mov    eax,0x2cc
+    0.00 :   179fe:  mov    QWORD PTR [rsp+0x38],rax
+    0.00 :   17a03:  mov    eax,0x186a0
+    0.00 :   17a08:  mov    QWORD PTR [rsp+0x70],rax
+    0.00 :   17a0d:  mov    QWORD PTR [rsp+0x78],0x0
+    0.00 :   17a16:  mov    QWORD PTR [rsp+0x68],0x0
+    0.00 :   17a1f:  xor    edx,edx
+    0.00 :   17a21:  mov    QWORD PTR [rsp+0x100],r14
+    0.00 :   17a29:  jmp    17a6d <presieve::main+0x63d>
+    0.00 :   17a2b:  nop    DWORD PTR [rax+rax*1+0x0]
+    0.00 :   17a30:  mov    rax,QWORD PTR [rsp+0x38]
+    0.00 :   17a35:  test   rax,rax
+    0.00 :   17a38:  mov    rdx,QWORD PTR [rsp+0x30]
+    0.00 :   17a3d:  je     18915 <presieve::main+0x14e5>
+    0.00 :   17a43:  add    rdx,0x186a0
+    0.00 :   17a4a:  inc    QWORD PTR [rsp+0x68]
+    0.00 :   17a4f:  add    QWORD PTR [rsp+0x80],0x186a0
+    0.00 :   17a5b:  add    QWORD PTR [rsp+0x78],0xfffffffffffe7960
+    0.00 :   17a64:  add    QWORD PTR [rsp+0x70],0xfffffffffffe7960
+    0.00 :   17a6d:  cmp    rdx,0x442bda5
+    0.00 :   17a74:  mov    eax,0x442bda5
+    0.00 :   17a79:  cmovb  rax,rdx
+    0.00 :   17a7d:  mov    QWORD PTR [rsp+0x18],rax
+    0.00 :   17a82:  lea    rbp,[rax+0x1869f]
+         : 426   let last = to - from + 1;
+    0.00 :   17a89:  mov    r8,rbp
+    0.00 :   17a8c:  sub    r8,rdx
+    0.00 :   17a8f:  inc    r8
+    0.00 :   17a92:  mov    QWORD PTR [rsp+0x30],rdx
+         : 431   while offset < last {
+    0.00 :   17a97:  jne    18710 <presieve::main+0x12e0>
+    0.00 :   17a9d:  mov    rax,QWORD PTR [rsp+0x38]
+    0.00 :   17aa2:  dec    rax
+    0.00 :   17aa5:  cmp    QWORD PTR [rsp+0x20],0x0
+    0.00 :   17aab:  mov    QWORD PTR [rsp+0x38],rax
+    0.00 :   17ab0:  je     188f0 <presieve::main+0x14c0>
+    0.00 :   17ab6:  mov    r9,QWORD PTR [rsp+0x10]
+    0.00 :   17abb:  mov    r11,QWORD PTR [rsp+0xf8]
+    0.00 :   17ac3:  jmp    17ae4 <presieve::main+0x6b4>
+    0.00 :   17ac5:  mov    r12b,0x7
+    0.00 :   17ac8:  nop    DWORD PTR [rax+rax*1+0x0]
+         : 443   *s_ref = match r {
+    0.30 :   17ad0:  mov    BYTE PTR [r9+0x7],r12b
+         : 445   *b_ref = b as u32;
+    0.33 :   17ad4:  mov    DWORD PTR [r9],edi
+    0.00 :   17ad7:  add    r9,0x8
+    0.03 :   17adb:  cmp    r9,r11
+    0.00 :   17ade:  je     17a30 <presieve::main+0x600>
+         : 450   let mut b = *b_ref as usize;
+    0.13 :   17ae4:  mov    edi,DWORD PTR [r9]
+         : 452   if b > to {
+    0.10 :   17ae7:  cmp    rbp,rdi
+    0.00 :   17aea:  jb     17ad7 <presieve::main+0x6a7>
+         : 455   .map(|item| (item.k, item.r, &mut item.b, &mut item.s))
+    0.03 :   17aec:  movzx  eax,BYTE PTR [r9+0x6]
+         : 457   *s_ref = match r {
+    0.03 :   17af1:  dec    al
+    0.10 :   17af3:  ror    al,1
+    0.03 :   17af5:  cmp    al,0xe
+    0.00 :   17af7:  ja     18cc3 <presieve::main+0x1893>
+    0.03 :   17afd:  movzx  r15d,WORD PTR [r9+0x4]
+    0.00 :   17b02:  movzx  r12d,BYTE PTR [r9+0x7]
+    0.00 :   17b07:  movzx  eax,al
+    0.00 :   17b0a:  lea    rcx,[rip+0xffffffffffff1447]        # 8f58 <GCC_except_table365+0x294>
+    0.27 :   17b11:  movsxd rax,DWORD PTR [rcx+rax*4]
+    0.07 :   17b15:  add    rax,rcx
+    0.03 :   17b18:  jmp    rax
+    0.30 :   17b1a:  lea    ecx,[r15+r15*1]
+    0.07 :   17b1e:  lea    eax,[rcx+rcx*2]
+    0.00 :   17b21:  movzx  eax,ax
+    0.00 :   17b24:  lea    edx,[r15*4+0x0]
+    0.00 :   17b2c:  movzx  r8d,dx
+    0.00 :   17b30:  movzx  r13d,cx
+    0.00 :   17b34:  lea    ecx,[r15*2+0x1]
+    0.00 :   17b3c:  movzx  r15d,cx
+         : 477   if s <= $n {
+    0.00 :   17b40:  test   r12b,r12b
+    0.30 :   17b43:  je     17b90 <presieve::main+0x760>
+    0.13 :   17b45:  movzx  ecx,r12b
+    0.00 :   17b49:  cmp    ecx,0x1
+    0.00 :   17b4c:  je     17bad <presieve::main+0x77d>
+    0.00 :   17b4e:  cmp    r12b,0x3
+    0.00 :   17b52:  jb     17bca <presieve::main+0x79a>
+    0.00 :   17b54:  je     17be7 <presieve::main+0x7b7>
+    0.03 :   17b5a:  cmp    r12b,0x5
+    0.00 :   17b5e:  jb     17c04 <presieve::main+0x7d4>
+    0.00 :   17b64:  je     17c21 <presieve::main+0x7f1>
+    0.00 :   17b6a:  cmp    r12b,0x7
+    0.03 :   17b6e:  jb     17c3e <presieve::main+0x80e>
+    0.07 :   17b74:  test   r12b,r12b
+    0.00 :   17b77:  je     17b90 <presieve::main+0x760>
+    0.00 :   17b79:  cmp    ecx,0x1
+    0.00 :   17b7c:  je     17bad <presieve::main+0x77d>
+    0.00 :   17b7e:  cmp    ecx,0x7
+    0.00 :   17b81:  jne    17b4e <presieve::main+0x71e>
+    0.00 :   17b83:  jmp    17c5b <presieve::main+0x82b>
+    0.00 :   17b88:  nop    DWORD PTR [rax+rax*1+0x0]
+         : 499   sieve[b] |= $mask;
+    0.00 :   17b90:  cmp    rdi,0x4444444
+    0.00 :   17b97:  ja     19132 <presieve::main+0x1d02>
+    0.57 :   17b9d:  or     BYTE PTR [rbx+rdi*1],0x1
+         : 503   b += $step as usize;
+    0.00 :   17ba1:  add    rdi,rax
+         : 505   if b > to {
+    0.00 :   17ba4:  cmp    rdi,rbp
+    0.00 :   17ba7:  ja     18700 <presieve::main+0x12d0>
+         : 508   sieve[b] |= $mask;
+    0.00 :   17bad:  cmp    rdi,0x4444445
+    0.00 :   17bb4:  jae    19088 <presieve::main+0x1c58>
+    0.63 :   17bba:  or     BYTE PTR [rbx+rdi*1],0x2
+         : 512   b += $step as usize;
+    0.00 :   17bbe:  add    rdi,r8
+         : 514   if b > to {
+    0.10 :   17bc1:  cmp    rdi,rbp
+    0.00 :   17bc4:  ja     186f8 <presieve::main+0x12c8>
+         : 517   sieve[b] |= $mask;
+    0.07 :   17bca:  cmp    rdi,0x4444445
+    0.00 :   17bd1:  jae    19044 <presieve::main+0x1c14>
+    1.10 :   17bd7:  or     BYTE PTR [rbx+rdi*1],0x4
+         : 521   b += $step as usize;
+    0.00 :   17bdb:  add    rdi,r13
+         : 523   if b > to {
+    0.03 :   17bde:  cmp    rdi,rbp
+    0.00 :   17be1:  ja     186f0 <presieve::main+0x12c0>
+         : 526   sieve[b] |= $mask;
+    0.00 :   17be7:  cmp    rdi,0x4444445
+    0.00 :   17bee:  jae    18fde <presieve::main+0x1bae>
+    0.80 :   17bf4:  or     BYTE PTR [rbx+rdi*1],0x8
+         : 530   b += $step as usize;
+    0.00 :   17bf8:  add    rdi,r8
+         : 532   if b > to {
+    0.13 :   17bfb:  cmp    rdi,rbp
+    0.00 :   17bfe:  ja     186e8 <presieve::main+0x12b8>
+         : 535   sieve[b] |= $mask;
+    0.00 :   17c04:  cmp    rdi,0x4444445
+    0.00 :   17c0b:  jae    18ef0 <presieve::main+0x1ac0>
+    0.80 :   17c11:  or     BYTE PTR [rbx+rdi*1],0x10
+         : 539   b += $step as usize;
+    0.00 :   17c15:  add    rdi,r13
+         : 541   if b > to {
+    0.10 :   17c18:  cmp    rdi,rbp
+    0.00 :   17c1b:  ja     186e0 <presieve::main+0x12b0>
+         : 544   sieve[b] |= $mask;
+    0.03 :   17c21:  cmp    rdi,0x4444445
+    0.00 :   17c28:  jae    18ece <presieve::main+0x1a9e>
+    0.53 :   17c2e:  or     BYTE PTR [rbx+rdi*1],0x20
+         : 548   b += $step as usize;
+    0.00 :   17c32:  add    rdi,r8
+         : 550   if b > to {
+    0.23 :   17c35:  cmp    rdi,rbp
+    0.00 :   17c38:  ja     186d8 <presieve::main+0x12a8>
+         : 553   sieve[b] |= $mask;
+    0.00 :   17c3e:  cmp    rdi,0x4444445
+    0.00 :   17c45:  jae    18e24 <presieve::main+0x19f4>
+    0.70 :   17c4b:  or     BYTE PTR [rbx+rdi*1],0x40
+         : 557   b += $step as usize;
+    0.00 :   17c4f:  add    rdi,rax
+         : 559   if b > to {
+    0.13 :   17c52:  cmp    rdi,rbp
+    0.00 :   17c55:  ja     17ac5 <presieve::main+0x695>
+         : 562   sieve[b] |= $mask;
+    0.00 :   17c5b:  cmp    rdi,0x4444444
+    0.00 :   17c62:  ja     18d9c <presieve::main+0x196c>
+    0.96 :   17c68:  or     BYTE PTR [rbx+rdi*1],0x80
+         : 566   b += $step as usize;
+    0.00 :   17c6c:  add    rdi,r15
+    0.13 :   17c6f:  xor    r12d,r12d
+         : 569   if b > to {
+    0.00 :   17c72:  cmp    rdi,rbp
+    0.00 :   17c75:  jbe    17b40 <presieve::main+0x710>
+    0.00 :   17c7b:  jmp    17ad0 <presieve::main+0x6a0>
+    0.10 :   17c80:  mov    ecx,r15d
+    0.00 :   17c83:  add    ecx,ecx
+    0.00 :   17c85:  lea    eax,[r15*2+0x1]
+    0.00 :   17c8d:  movzx  eax,ax
+    0.00 :   17c90:  lea    ecx,[rcx+rcx*2]
+    0.03 :   17c93:  add    ecx,0x6
+    0.03 :   17c96:  movzx  r8d,cx
+    0.00 :   17c9a:  lea    ecx,[r15*4+0x4]
+    0.00 :   17ca2:  movzx  r13d,cx
+    0.00 :   17ca6:  lea    ecx,[r15*2+0x2]
+    0.00 :   17cae:  movzx  r15d,cx
+    0.03 :   17cb2:  data16 data16 data16 data16 cs nop WORD PTR [rax+rax*1+0x0]
+         : 585   if s <= $n {
+    0.00 :   17cc0:  test   r12b,r12b
+    0.50 :   17cc3:  je     17d10 <presieve::main+0x8e0>
+    0.13 :   17cc5:  movzx  ecx,r12b
+    0.03 :   17cc9:  cmp    ecx,0x1
+    0.00 :   17ccc:  je     17d2d <presieve::main+0x8fd>
+    0.00 :   17cce:  cmp    r12b,0x3
+    0.00 :   17cd2:  jb     17d4a <presieve::main+0x91a>
+    0.03 :   17cd4:  je     17d67 <presieve::main+0x937>
+    0.03 :   17cda:  cmp    r12b,0x5
+    0.00 :   17cde:  jb     17d84 <presieve::main+0x954>
+    0.00 :   17ce4:  je     17da1 <presieve::main+0x971>
+    0.00 :   17cea:  cmp    r12b,0x7
+    0.00 :   17cee:  jb     17dbe <presieve::main+0x98e>
+    0.07 :   17cf4:  test   r12b,r12b
+    0.00 :   17cf7:  je     17d10 <presieve::main+0x8e0>
+    0.00 :   17cf9:  cmp    ecx,0x1
+    0.00 :   17cfc:  je     17d2d <presieve::main+0x8fd>
+    0.00 :   17cfe:  cmp    ecx,0x7
+    0.00 :   17d01:  jne    17cce <presieve::main+0x89e>
+    0.03 :   17d03:  jmp    17ddb <presieve::main+0x9ab>
+    0.00 :   17d08:  nop    DWORD PTR [rax+rax*1+0x0]
+         : 607   sieve[b] |= $mask;
+    0.00 :   17d10:  cmp    rdi,0x4444444
+    0.00 :   17d17:  ja     19154 <presieve::main+0x1d24>
+    1.00 :   17d1d:  or     BYTE PTR [rbx+rdi*1],0x1
+         : 611   b += $step as usize;
+    0.00 :   17d21:  add    rdi,rax
+         : 613   if b > to {
+    0.00 :   17d24:  cmp    rdi,rbp
+    0.00 :   17d27:  ja     18700 <presieve::main+0x12d0>
+         : 616   sieve[b] |= $mask;
+    0.00 :   17d2d:  cmp    rdi,0x4444445
+    0.00 :   17d34:  jae    190aa <presieve::main+0x1c7a>
+    1.00 :   17d3a:  or     BYTE PTR [rbx+rdi*1],0x80
+         : 620   b += $step as usize;
+    0.00 :   17d3e:  add    rdi,r8
+         : 622   if b > to {
+    0.37 :   17d41:  cmp    rdi,rbp
+    0.00 :   17d44:  ja     186f8 <presieve::main+0x12c8>
+         : 625   sieve[b] |= $mask;
+    0.10 :   17d4a:  cmp    rdi,0x4444445
+    0.00 :   17d51:  jae    19022 <presieve::main+0x1bf2>
+    1.15 :   17d57:  or     BYTE PTR [rbx+rdi*1],0x40
+         : 629   b += $step as usize;
+    0.00 :   17d5b:  add    rdi,r13
+         : 631   if b > to {
+    0.03 :   17d5e:  cmp    rdi,rbp
+    0.00 :   17d61:  ja     186f0 <presieve::main+0x12c0>
+         : 634   sieve[b] |= $mask;
+    0.00 :   17d67:  cmp    rdi,0x4444445
+    0.00 :   17d6e:  jae    18f67 <presieve::main+0x1b37>
+    0.77 :   17d74:  or     BYTE PTR [rbx+rdi*1],0x20
+         : 638   b += $step as usize;
+    0.00 :   17d78:  add    rdi,r15
+         : 640   if b > to {
+    0.10 :   17d7b:  cmp    rdi,rbp
+    0.00 :   17d7e:  ja     186e8 <presieve::main+0x12b8>
+         : 643   sieve[b] |= $mask;
+    0.00 :   17d84:  cmp    rdi,0x4444445
+    0.00 :   17d8b:  jae    18f01 <presieve::main+0x1ad1>
+    0.90 :   17d91:  or     BYTE PTR [rbx+rdi*1],0x10
+         : 647   b += $step as usize;
+    0.00 :   17d95:  add    rdi,r13
+         : 649   if b > to {
+    0.10 :   17d98:  cmp    rdi,rbp
+    0.00 :   17d9b:  ja     186e0 <presieve::main+0x12b0>
+         : 652   sieve[b] |= $mask;
+    0.03 :   17da1:  cmp    rdi,0x4444445
+    0.00 :   17da8:  jae    18e57 <presieve::main+0x1a27>
+    0.57 :   17dae:  or     BYTE PTR [rbx+rdi*1],0x8
+         : 656   b += $step as usize;
+    0.00 :   17db2:  add    rdi,r15
+         : 658   if b > to {
+    0.28 :   17db5:  cmp    rdi,rbp
+    0.00 :   17db8:  ja     186d8 <presieve::main+0x12a8>
+         : 661   sieve[b] |= $mask;
+    0.00 :   17dbe:  cmp    rdi,0x4444445
+    0.00 :   17dc5:  jae    18e35 <presieve::main+0x1a05>
+    0.75 :   17dcb:  or     BYTE PTR [rbx+rdi*1],0x4
+         : 665   b += $step as usize;
+    0.00 :   17dcf:  add    rdi,r13
+         : 667   if b > to {
+    0.10 :   17dd2:  cmp    rdi,rbp
+    0.00 :   17dd5:  ja     17ac5 <presieve::main+0x695>
+         : 670   sieve[b] |= $mask;
+    0.00 :   17ddb:  cmp    rdi,0x4444444
+    0.00 :   17de2:  ja     18d8b <presieve::main+0x195b>
+    0.87 :   17de8:  or     BYTE PTR [rbx+rdi*1],0x2
+         : 674   b += $step as usize;
+    0.00 :   17dec:  add    rdi,r8
+    0.10 :   17def:  xor    r12d,r12d
+         : 677   if b > to {
+    0.00 :   17df2:  cmp    rdi,rbp
+    0.00 :   17df5:  jbe    17cc0 <presieve::main+0x890>
+    0.00 :   17dfb:  jmp    17ad0 <presieve::main+0x6a0>
+    0.03 :   17e00:  lea    ecx,[r15*4+0x0]
+    0.00 :   17e08:  lea    eax,[r15*4+0x1]
+    0.00 :   17e10:  movzx  eax,ax
+    0.00 :   17e13:  mov    edx,r15d
+    0.00 :   17e16:  add    edx,edx
+    0.00 :   17e18:  lea    esi,[r15*2+0x1]
+    0.00 :   17e20:  movzx  r8d,si
+    0.00 :   17e24:  movzx  r13d,cx
+    0.00 :   17e28:  lea    ecx,[rdx+rdx*2]
+    0.00 :   17e2b:  inc    ecx
+    0.07 :   17e2d:  movzx  r15d,cx
+    0.00 :   17e31:  data16 data16 data16 data16 data16 cs nop WORD PTR [rax+rax*1+0x0]
+         : 693   if s <= $n {
+    0.00 :   17e40:  test   r12b,r12b
+    0.17 :   17e43:  je     17e90 <presieve::main+0xa60>
+    0.03 :   17e45:  movzx  ecx,r12b
+    0.00 :   17e49:  cmp    ecx,0x1
+    0.00 :   17e4c:  je     17ead <presieve::main+0xa7d>
+    0.00 :   17e4e:  cmp    r12b,0x3
+    0.03 :   17e52:  jb     17eca <presieve::main+0xa9a>
+    0.00 :   17e54:  je     17ee7 <presieve::main+0xab7>
+    0.00 :   17e5a:  cmp    r12b,0x5
+    0.00 :   17e5e:  jb     17f04 <presieve::main+0xad4>
+    0.00 :   17e64:  je     17f21 <presieve::main+0xaf1>
+    0.00 :   17e6a:  cmp    r12b,0x7
+    0.00 :   17e6e:  jb     17f3e <presieve::main+0xb0e>
+    0.00 :   17e74:  test   r12b,r12b
+    0.00 :   17e77:  je     17e90 <presieve::main+0xa60>
+    0.00 :   17e79:  cmp    ecx,0x1
+    0.00 :   17e7c:  je     17ead <presieve::main+0xa7d>
+    0.00 :   17e7e:  cmp    ecx,0x7
+    0.00 :   17e81:  jne    17e4e <presieve::main+0xa1e>
+    0.00 :   17e83:  jmp    17f5b <presieve::main+0xb2b>
+    0.00 :   17e88:  nop    DWORD PTR [rax+rax*1+0x0]
+         : 715   sieve[b] |= $mask;
+    0.07 :   17e90:  cmp    rdi,0x4444444
+    0.00 :   17e97:  ja     19176 <presieve::main+0x1d46>
+    0.66 :   17e9d:  or     BYTE PTR [rbx+rdi*1],0x20
+         : 719   b += $step as usize;
+    0.00 :   17ea1:  add    rdi,rax
+         : 721   if b > to {
+    0.00 :   17ea4:  cmp    rdi,rbp
+    0.00 :   17ea7:  ja     18700 <presieve::main+0x12d0>
+         : 724   sieve[b] |= $mask;
+    0.00 :   17ead:  cmp    rdi,0x4444445
+    0.00 :   17eb4:  jae    19077 <presieve::main+0x1c47>
+    0.96 :   17eba:  or     BYTE PTR [rbx+rdi*1],0x10
+         : 728   b += $step as usize;
+    0.00 :   17ebe:  add    rdi,r8
+         : 730   if b > to {
+    0.23 :   17ec1:  cmp    rdi,rbp
+    0.00 :   17ec4:  ja     186f8 <presieve::main+0x12c8>
+         : 733   sieve[b] |= $mask;
+    0.00 :   17eca:  cmp    rdi,0x4444445
+    0.00 :   17ed1:  jae    19055 <presieve::main+0x1c25>
+    0.80 :   17ed7:  or     BYTE PTR [rbx+rdi*1],0x1
+         : 737   b += $step as usize;
+    0.00 :   17edb:  add    rdi,r13
+         : 739   if b > to {
+    0.03 :   17ede:  cmp    rdi,rbp
+    0.00 :   17ee1:  ja     186f0 <presieve::main+0x12c0>
+         : 742   sieve[b] |= $mask;
+    0.03 :   17ee7:  cmp    rdi,0x4444445
+    0.00 :   17eee:  jae    18fcd <presieve::main+0x1b9d>
+    0.86 :   17ef4:  or     BYTE PTR [rbx+rdi*1],0x80
+         : 746   b += $step as usize;
+    0.00 :   17ef8:  add    rdi,r8
+         : 748   if b > to {
+    0.17 :   17efb:  cmp    rdi,rbp
+    0.00 :   17efe:  ja     186e8 <presieve::main+0x12b8>
+         : 751   sieve[b] |= $mask;
+    0.03 :   17f04:  cmp    rdi,0x4444445
+    0.00 :   17f0b:  jae    18edf <presieve::main+0x1aaf>
+    0.70 :   17f11:  or     BYTE PTR [rbx+rdi*1],0x8
+         : 755   b += $step as usize;
+    0.00 :   17f15:  add    rdi,rax
+         : 757   if b > to {
+    0.07 :   17f18:  cmp    rdi,rbp
+    0.00 :   17f1b:  ja     186e0 <presieve::main+0x12b0>
+         : 760   sieve[b] |= $mask;
+    0.00 :   17f21:  cmp    rdi,0x4444445
+    0.00 :   17f28:  jae    18ebd <presieve::main+0x1a8d>
+    0.77 :   17f2e:  or     BYTE PTR [rbx+rdi*1],0x4
+         : 764   b += $step as usize;
+    0.00 :   17f32:  add    rdi,r15
+         : 766   if b > to {
+    0.07 :   17f35:  cmp    rdi,rbp
+    0.00 :   17f38:  ja     186d8 <presieve::main+0x12a8>
+         : 769   sieve[b] |= $mask;
+    0.00 :   17f3e:  cmp    rdi,0x4444445
+    0.00 :   17f45:  jae    18e13 <presieve::main+0x19e3>
+    1.13 :   17f4b:  or     BYTE PTR [rbx+rdi*1],0x40
+         : 773   b += $step as usize;
+    0.00 :   17f4f:  add    rdi,r8
+         : 775   if b > to {
+    0.03 :   17f52:  cmp    rdi,rbp
+    0.00 :   17f55:  ja     17ac5 <presieve::main+0x695>
+         : 778   sieve[b] |= $mask;
+    0.00 :   17f5b:  cmp    rdi,0x4444444
+    0.00 :   17f62:  ja     18d7a <presieve::main+0x194a>
+    0.77 :   17f68:  or     BYTE PTR [rbx+rdi*1],0x2
+         : 782   b += $step as usize;
+    0.00 :   17f6c:  add    rdi,r15
+    0.07 :   17f6f:  xor    r12d,r12d
+         : 785   if b > to {
+    0.00 :   17f72:  cmp    rdi,rbp
+    0.00 :   17f75:  jbe    17e40 <presieve::main+0xa10>
+    0.00 :   17f7b:  jmp    17ad0 <presieve::main+0x6a0>
+    0.27 :   17f80:  lea    ecx,[r15+r15*1]
+    0.00 :   17f84:  movzx  eax,cx
+    0.00 :   17f87:  lea    edx,[r15*4+0x2]
+    0.00 :   17f8f:  movzx  r8d,dx
+    0.00 :   17f93:  lea    ecx,[rcx+rcx*2]
+    0.00 :   17f96:  add    ecx,0x2
+    0.00 :   17f99:  movzx  r13d,cx
+    0.00 :   17f9d:  lea    ecx,[r15*2+0x1]
+    0.00 :   17fa5:  movzx  r15d,cx
+    0.00 :   17fa9:  nop    DWORD PTR [rax+0x0]
+         : 799   if s <= $n {
+    0.03 :   17fb0:  test   r12b,r12b
+    0.33 :   17fb3:  je     18000 <presieve::main+0xbd0>
+    0.03 :   17fb5:  movzx  ecx,r12b
+    0.00 :   17fb9:  cmp    ecx,0x1
+    0.00 :   17fbc:  je     1801d <presieve::main+0xbed>
+    0.00 :   17fbe:  cmp    r12b,0x3
+    0.00 :   17fc2:  jb     1803a <presieve::main+0xc0a>
+    0.03 :   17fc4:  je     18057 <presieve::main+0xc27>
+    0.00 :   17fca:  cmp    r12b,0x5
+    0.00 :   17fce:  jb     18074 <presieve::main+0xc44>
+    0.00 :   17fd4:  je     18091 <presieve::main+0xc61>
+    0.00 :   17fda:  cmp    r12b,0x7
+    0.00 :   17fde:  jb     180ae <presieve::main+0xc7e>
+    0.00 :   17fe4:  test   r12b,r12b
+    0.00 :   17fe7:  je     18000 <presieve::main+0xbd0>
+    0.00 :   17fe9:  cmp    ecx,0x1
+    0.00 :   17fec:  je     1801d <presieve::main+0xbed>
+    0.00 :   17fee:  cmp    ecx,0x7
+    0.00 :   17ff1:  jne    17fbe <presieve::main+0xb8e>
+    0.00 :   17ff3:  jmp    180cb <presieve::main+0xc9b>
+    0.00 :   17ff8:  nop    DWORD PTR [rax+rax*1+0x0]
+         : 821   sieve[b] |= $mask;
+    0.03 :   18000:  cmp    rdi,0x4444444
+    0.00 :   18007:  ja     190ff <presieve::main+0x1ccf>
+    0.56 :   1800d:  or     BYTE PTR [rbx+rdi*1],0x1
+         : 825   b += $step as usize;
+    0.00 :   18011:  add    rdi,rax
+         : 827   if b > to {
+    0.00 :   18014:  cmp    rdi,rbp
+    0.00 :   18017:  ja     18700 <presieve::main+0x12d0>
+         : 830   sieve[b] |= $mask;
+    0.00 :   1801d:  cmp    rdi,0x4444445
+    0.00 :   18024:  jae    19099 <presieve::main+0x1c69>
+    0.60 :   1802a:  or     BYTE PTR [rbx+rdi*1],0x40
+         : 834   b += $step as usize;
+    0.00 :   1802e:  add    rdi,r8
+         : 836   if b > to {
+    0.27 :   18031:  cmp    rdi,rbp
+    0.00 :   18034:  ja     186f8 <presieve::main+0x12c8>
+         : 839   sieve[b] |= $mask;
+    0.07 :   1803a:  cmp    rdi,0x4444445
+    0.00 :   18041:  jae    19066 <presieve::main+0x1c36>
+    0.37 :   18047:  or     BYTE PTR [rbx+rdi*1],0x2
+         : 843   b += $step as usize;
+    0.00 :   1804b:  add    rdi,rax
+         : 845   if b > to {
+    0.00 :   1804e:  cmp    rdi,rbp
+    0.00 :   18051:  ja     186f0 <presieve::main+0x12c0>
+         : 848   sieve[b] |= $mask;
+    0.03 :   18057:  cmp    rdi,0x4444445
+    0.00 :   1805e:  jae    18fbc <presieve::main+0x1b8c>
+    0.57 :   18064:  or     BYTE PTR [rbx+rdi*1],0x80
+         : 852   b += $step as usize;
+    0.00 :   18068:  add    rdi,r8
+         : 854   if b > to {
+    0.33 :   1806b:  cmp    rdi,rbp
+    0.00 :   1806e:  ja     186e8 <presieve::main+0x12b8>
+         : 857   sieve[b] |= $mask;
+    0.03 :   18074:  cmp    rdi,0x4444445
+    0.00 :   1807b:  jae    18f56 <presieve::main+0x1b26>
+    0.80 :   18081:  or     BYTE PTR [rbx+rdi*1],0x8
+         : 861   b += $step as usize;
+    0.00 :   18085:  add    rdi,r13
+         : 863   if b > to {
+    0.00 :   18088:  cmp    rdi,rbp
+    0.00 :   1808b:  ja     186e0 <presieve::main+0x12b0>
+         : 866   sieve[b] |= $mask;
+    0.00 :   18091:  cmp    rdi,0x4444445
+    0.00 :   18098:  jae    18eac <presieve::main+0x1a7c>
+    0.96 :   1809e:  or     BYTE PTR [rbx+rdi*1],0x20
+         : 870   b += $step as usize;
+    0.00 :   180a2:  add    rdi,r15
+         : 872   if b > to {
+    0.20 :   180a5:  cmp    rdi,rbp
+    0.00 :   180a8:  ja     186d8 <presieve::main+0x12a8>
+         : 875   sieve[b] |= $mask;
+    0.00 :   180ae:  cmp    rdi,0x4444445
+    0.00 :   180b5:  jae    18e02 <presieve::main+0x19d2>
+    0.50 :   180bb:  or     BYTE PTR [rbx+rdi*1],0x4
+         : 879   b += $step as usize;
+    0.00 :   180bf:  add    rdi,r13
+         : 881   if b > to {
+    0.07 :   180c2:  cmp    rdi,rbp
+    0.00 :   180c5:  ja     17ac5 <presieve::main+0x695>
+         : 884   sieve[b] |= $mask;
+    0.00 :   180cb:  cmp    rdi,0x4444444
+    0.00 :   180d2:  ja     18d6c <presieve::main+0x193c>
+    0.80 :   180d8:  or     BYTE PTR [rbx+rdi*1],0x10
+         : 888   b += $step as usize;
+    0.00 :   180dc:  add    rdi,r8
+    0.16 :   180df:  xor    r12d,r12d
+         : 891   if b > to {
+    0.00 :   180e2:  cmp    rdi,rbp
+    0.00 :   180e5:  jbe    17fb0 <presieve::main+0xb80>
+    0.00 :   180eb:  jmp    17ad0 <presieve::main+0x6a0>
+    0.23 :   180f0:  lea    eax,[r15*4+0x2]
+    0.00 :   180f8:  movzx  eax,ax
+    0.00 :   180fb:  mov    ecx,r15d
+    0.00 :   180fe:  add    ecx,ecx
+    0.00 :   18100:  lea    edx,[r15*2+0x1]
+    0.03 :   18108:  movzx  r8d,dx
+    0.00 :   1810c:  lea    edx,[r15*4+0x1]
+    0.00 :   18114:  movzx  r13d,dx
+    0.00 :   18118:  lea    ecx,[rcx+rcx*2]
+    0.00 :   1811b:  add    ecx,0x3
+    0.00 :   1811e:  movzx  r15d,cx
+    0.00 :   18122:  data16 data16 data16 data16 cs nop WORD PTR [rax+rax*1+0x0]
+         : 907   if s <= $n {
+    0.00 :   18130:  test   r12b,r12b
+    0.47 :   18133:  je     18180 <presieve::main+0xd50>
+    0.07 :   18135:  movzx  ecx,r12b
+    0.00 :   18139:  cmp    ecx,0x1
+    0.00 :   1813c:  je     1819d <presieve::main+0xd6d>
+    0.00 :   1813e:  cmp    r12b,0x3
+    0.00 :   18142:  jb     181ba <presieve::main+0xd8a>
+    0.00 :   18144:  je     181d7 <presieve::main+0xda7>
+    0.00 :   1814a:  cmp    r12b,0x5
+    0.00 :   1814e:  jb     181f4 <presieve::main+0xdc4>
+    0.03 :   18154:  je     18211 <presieve::main+0xde1>
+    0.00 :   1815a:  cmp    r12b,0x7
+    0.00 :   1815e:  jb     1822e <presieve::main+0xdfe>
+    0.03 :   18164:  test   r12b,r12b
+    0.00 :   18167:  je     18180 <presieve::main+0xd50>
+    0.00 :   18169:  cmp    ecx,0x1
+    0.00 :   1816c:  je     1819d <presieve::main+0xd6d>
+    0.00 :   1816e:  cmp    ecx,0x7
+    0.00 :   18171:  jne    1813e <presieve::main+0xd0e>
+    0.00 :   18173:  jmp    1824b <presieve::main+0xe1b>
+    0.00 :   18178:  nop    DWORD PTR [rax+rax*1+0x0]
+         : 929   sieve[b] |= $mask;
+    0.00 :   18180:  cmp    rdi,0x4444444
+    0.00 :   18187:  ja     19143 <presieve::main+0x1d13>
+    0.70 :   1818d:  or     BYTE PTR [rbx+rdi*1],0x20
+         : 933   b += $step as usize;
+    0.00 :   18191:  add    rdi,rax
+         : 935   if b > to {
+    0.00 :   18194:  cmp    rdi,rbp
+    0.00 :   18197:  ja     18700 <presieve::main+0x12d0>
+         : 938   sieve[b] |= $mask;
+    0.03 :   1819d:  cmp    rdi,0x4444445
+    0.00 :   181a4:  jae    190dd <presieve::main+0x1cad>
+    1.03 :   181aa:  or     BYTE PTR [rbx+rdi*1],0x4
+         : 942   b += $step as usize;
+    0.00 :   181ae:  add    rdi,r8
+         : 944   if b > to {
+    0.23 :   181b1:  cmp    rdi,rbp
+    0.00 :   181b4:  ja     186f8 <presieve::main+0x12c8>
+         : 947   sieve[b] |= $mask;
+    0.00 :   181ba:  cmp    rdi,0x4444445
+    0.00 :   181c1:  jae    18fef <presieve::main+0x1bbf>
+    0.50 :   181c7:  or     BYTE PTR [rbx+rdi*1],0x2
+         : 951   b += $step as usize;
+    0.00 :   181cb:  add    rdi,r13
+         : 953   if b > to {
+    0.03 :   181ce:  cmp    rdi,rbp
+    0.00 :   181d1:  ja     186f0 <presieve::main+0x12c0>
+         : 956   sieve[b] |= $mask;
+    0.00 :   181d7:  cmp    rdi,0x4444445
+    0.00 :   181de:  jae    18fab <presieve::main+0x1b7b>
+    0.80 :   181e4:  or     BYTE PTR [rbx+rdi*1],0x80
+         : 960   b += $step as usize;
+    0.00 :   181e8:  add    rdi,r15
+         : 962   if b > to {
+    0.13 :   181eb:  cmp    rdi,rbp
+    0.00 :   181ee:  ja     186e8 <presieve::main+0x12b8>
+         : 965   sieve[b] |= $mask;
+    0.00 :   181f4:  cmp    rdi,0x4444445
+    0.00 :   181fb:  jae    18f45 <presieve::main+0x1b15>
+    0.77 :   18201:  or     BYTE PTR [rbx+rdi*1],0x10
+         : 969   b += $step as usize;
+    0.00 :   18205:  add    rdi,r8
+         : 971   if b > to {
+    0.10 :   18208:  cmp    rdi,rbp
+    0.00 :   1820b:  ja     186e0 <presieve::main+0x12b0>
+         : 974   sieve[b] |= $mask;
+    0.00 :   18211:  cmp    rdi,0x4444445
+    0.00 :   18218:  jae    18e9b <presieve::main+0x1a6b>
+    0.47 :   1821e:  or     BYTE PTR [rbx+rdi*1],0x8
+         : 978   b += $step as usize;
+    0.00 :   18222:  add    rdi,r15
+         : 980   if b > to {
+    0.13 :   18225:  cmp    rdi,rbp
+    0.00 :   18228:  ja     186d8 <presieve::main+0x12a8>
+         : 983   sieve[b] |= $mask;
+    0.03 :   1822e:  cmp    rdi,0x4444445
+    0.00 :   18235:  jae    18df1 <presieve::main+0x19c1>
+    0.70 :   1823b:  or     BYTE PTR [rbx+rdi*1],0x1
+         : 987   b += $step as usize;
+    0.00 :   1823f:  add    rdi,r13
+         : 989   if b > to {
+    0.03 :   18242:  cmp    rdi,rbp
+    0.00 :   18245:  ja     17ac5 <presieve::main+0x695>
+         : 992   sieve[b] |= $mask;
+    0.00 :   1824b:  cmp    rdi,0x4444444
+    0.00 :   18252:  ja     18d5e <presieve::main+0x192e>
+    0.77 :   18258:  or     BYTE PTR [rbx+rdi*1],0x40
+         : 996   b += $step as usize;
+    0.00 :   1825c:  add    rdi,r8
+    0.17 :   1825f:  xor    r12d,r12d
+         : 999   if b > to {
+    0.00 :   18262:  cmp    rdi,rbp
+    0.00 :   18265:  jbe    18130 <presieve::main+0xd00>
+    0.00 :   1826b:  jmp    17ad0 <presieve::main+0x6a0>
+    0.17 :   18270:  lea    eax,[r15*4+0x2]
+    0.03 :   18278:  movzx  eax,ax
+    0.00 :   1827b:  mov    ecx,r15d
+    0.00 :   1827e:  add    ecx,ecx
+    0.00 :   18280:  lea    ecx,[rcx+rcx*2]
+    0.03 :   18283:  add    ecx,0x4
+    0.00 :   18286:  movzx  r8d,cx
+    0.00 :   1828a:  lea    ecx,[r15*2+0x1]
+    0.00 :   18292:  movzx  r13d,cx
+    0.00 :   18296:  lea    ecx,[r15*2+0x2]
+    0.00 :   1829e:  movzx  r15d,cx
+    0.00 :   182a2:  data16 data16 data16 data16 cs nop WORD PTR [rax+rax*1+0x0]
+         : 1015  if s <= $n {
+    0.00 :   182b0:  test   r12b,r12b
+    0.27 :   182b3:  je     18300 <presieve::main+0xed0>
+    0.03 :   182b5:  movzx  ecx,r12b
+    0.00 :   182b9:  cmp    ecx,0x1
+    0.00 :   182bc:  je     1831d <presieve::main+0xeed>
+    0.00 :   182be:  cmp    r12b,0x3
+    0.00 :   182c2:  jb     1833a <presieve::main+0xf0a>
+    0.00 :   182c4:  je     18357 <presieve::main+0xf27>
+    0.00 :   182ca:  cmp    r12b,0x5
+    0.03 :   182ce:  jb     18374 <presieve::main+0xf44>
+    0.00 :   182d4:  je     18391 <presieve::main+0xf61>
+    0.00 :   182da:  cmp    r12b,0x7
+    0.00 :   182de:  jb     183ae <presieve::main+0xf7e>
+    0.00 :   182e4:  test   r12b,r12b
+    0.00 :   182e7:  je     18300 <presieve::main+0xed0>
+    0.00 :   182e9:  cmp    ecx,0x1
+    0.00 :   182ec:  je     1831d <presieve::main+0xeed>
+    0.00 :   182ee:  cmp    ecx,0x7
+    0.00 :   182f1:  jne    182be <presieve::main+0xe8e>
+    0.00 :   182f3:  jmp    183cb <presieve::main+0xf9b>
+    0.00 :   182f8:  nop    DWORD PTR [rax+rax*1+0x0]
+         : 1037  sieve[b] |= $mask;
+    0.00 :   18300:  cmp    rdi,0x4444444
+    0.00 :   18307:  ja     19165 <presieve::main+0x1d35>
+    0.67 :   1830d:  or     BYTE PTR [rbx+rdi*1],0x1
+         : 1041  b += $step as usize;
+    0.00 :   18311:  add    rdi,rax
+         : 1043  if b > to {
+    0.00 :   18314:  cmp    rdi,rbp
+    0.00 :   18317:  ja     18700 <presieve::main+0x12d0>
+         : 1046  sieve[b] |= $mask;
+    0.03 :   1831d:  cmp    rdi,0x4444445
+    0.00 :   18324:  jae    190cc <presieve::main+0x1c9c>
+    0.53 :   1832a:  or     BYTE PTR [rbx+rdi*1],0x10
+         : 1050  b += $step as usize;
+    0.00 :   1832e:  add    rdi,r8
+         : 1052  if b > to {
+    0.40 :   18331:  cmp    rdi,rbp
+    0.00 :   18334:  ja     186f8 <presieve::main+0x12c8>
+         : 1055  sieve[b] |= $mask;
+    0.07 :   1833a:  cmp    rdi,0x4444445
+    0.00 :   18341:  jae    19000 <presieve::main+0x1bd0>
+    1.00 :   18347:  or     BYTE PTR [rbx+rdi*1],0x4
+         : 1059  b += $step as usize;
+    0.00 :   1834b:  add    rdi,r13
+         : 1061  if b > to {
+    0.07 :   1834e:  cmp    rdi,rbp
+    0.00 :   18351:  ja     186f0 <presieve::main+0x12c0>
+         : 1064  sieve[b] |= $mask;
+    0.00 :   18357:  cmp    rdi,0x4444445
+    0.00 :   1835e:  jae    18f89 <presieve::main+0x1b59>
+    0.80 :   18364:  or     BYTE PTR [rbx+rdi*1],0x20
+         : 1068  b += $step as usize;
+    0.00 :   18368:  add    rdi,r8
+         : 1070  if b > to {
+    0.20 :   1836b:  cmp    rdi,rbp
+    0.00 :   1836e:  ja     186e8 <presieve::main+0x12b8>
+         : 1073  sieve[b] |= $mask;
+    0.03 :   18374:  cmp    rdi,0x4444445
+    0.00 :   1837b:  jae    18f23 <presieve::main+0x1af3>
+    0.70 :   18381:  or     BYTE PTR [rbx+rdi*1],0x8
+         : 1077  b += $step as usize;
+    0.00 :   18385:  add    rdi,rax
+         : 1079  if b > to {
+    0.23 :   18388:  cmp    rdi,rbp
+    0.00 :   1838b:  ja     186e0 <presieve::main+0x12b0>
+         : 1082  sieve[b] |= $mask;
+    0.00 :   18391:  cmp    rdi,0x4444445
+    0.00 :   18398:  jae    18e79 <presieve::main+0x1a49>
+    0.80 :   1839e:  or     BYTE PTR [rbx+rdi*1],0x80
+         : 1086  b += $step as usize;
+    0.00 :   183a2:  add    rdi,r15
+         : 1088  if b > to {
+    0.20 :   183a5:  cmp    rdi,rbp
+    0.00 :   183a8:  ja     186d8 <presieve::main+0x12a8>
+         : 1091  sieve[b] |= $mask;
+    0.00 :   183ae:  cmp    rdi,0x4444445
+    0.00 :   183b5:  jae    18dcf <presieve::main+0x199f>
+    0.69 :   183bb:  or     BYTE PTR [rbx+rdi*1],0x2
+         : 1095  b += $step as usize;
+    0.00 :   183bf:  add    rdi,rax
+         : 1097  if b > to {
+    0.16 :   183c2:  cmp    rdi,rbp
+    0.00 :   183c5:  ja     17ac5 <presieve::main+0x695>
+         : 1100  sieve[b] |= $mask;
+    0.00 :   183cb:  cmp    rdi,0x4444444
+    0.00 :   183d2:  ja     18dbe <presieve::main+0x198e>
+    0.64 :   183d8:  or     BYTE PTR [rbx+rdi*1],0x40
+         : 1104  b += $step as usize;
+    0.00 :   183dc:  add    rdi,r15
+    0.23 :   183df:  xor    r12d,r12d
+         : 1107  if b > to {
+    0.00 :   183e2:  cmp    rdi,rbp
+    0.00 :   183e5:  jbe    182b0 <presieve::main+0xe80>
+    0.00 :   183eb:  jmp    17ad0 <presieve::main+0x6a0>
+    0.10 :   183f0:  mov    ecx,r15d
+    0.07 :   183f3:  add    ecx,ecx
+    0.00 :   183f5:  lea    eax,[r15*2+0x1]
+    0.03 :   183fd:  movzx  eax,ax
+    0.00 :   18400:  lea    edx,[r15*4+0x3]
+    0.07 :   18408:  movzx  r8d,dx
+    0.00 :   1840c:  lea    ecx,[rcx+rcx*2]
+    0.00 :   1840f:  add    ecx,0x3
+    0.00 :   18412:  movzx  r13d,cx
+    0.00 :   18416:  lea    ecx,[r15*4+0x2]
+    0.00 :   1841e:  movzx  r15d,cx
+    0.03 :   18422:  data16 data16 data16 data16 cs nop WORD PTR [rax+rax*1+0x0]
+         : 1123  if s <= $n {
+    0.00 :   18430:  test   r12b,r12b
+    0.30 :   18433:  je     18480 <presieve::main+0x1050>
+    0.03 :   18435:  movzx  ecx,r12b
+    0.00 :   18439:  cmp    ecx,0x1
+    0.00 :   1843c:  je     1849d <presieve::main+0x106d>
+    0.00 :   1843e:  cmp    r12b,0x3
+    0.00 :   18442:  jb     184ba <presieve::main+0x108a>
+    0.00 :   18444:  je     184d7 <presieve::main+0x10a7>
+    0.03 :   1844a:  cmp    r12b,0x5
+    0.00 :   1844e:  jb     184f4 <presieve::main+0x10c4>
+    0.00 :   18454:  je     18511 <presieve::main+0x10e1>
+    0.03 :   1845a:  cmp    r12b,0x7
+    0.00 :   1845e:  jb     1852e <presieve::main+0x10fe>
+    0.00 :   18464:  test   r12b,r12b
+    0.00 :   18467:  je     18480 <presieve::main+0x1050>
+    0.00 :   18469:  cmp    ecx,0x1
+    0.00 :   1846c:  je     1849d <presieve::main+0x106d>
+    0.00 :   1846e:  cmp    ecx,0x7
+    0.00 :   18471:  jne    1843e <presieve::main+0x100e>
+    0.00 :   18473:  jmp    1854b <presieve::main+0x111b>
+    0.00 :   18478:  nop    DWORD PTR [rax+rax*1+0x0]
+         : 1145  sieve[b] |= $mask;
+    0.00 :   18480:  cmp    rdi,0x4444444
+    0.00 :   18487:  ja     19110 <presieve::main+0x1ce0>
+    0.53 :   1848d:  or     BYTE PTR [rbx+rdi*1],0x20
+         : 1149  b += $step as usize;
+    0.00 :   18491:  add    rdi,rax
+         : 1151  if b > to {
+    0.00 :   18494:  cmp    rdi,rbp
+    0.00 :   18497:  ja     18700 <presieve::main+0x12d0>
+         : 1154  sieve[b] |= $mask;
+    0.03 :   1849d:  cmp    rdi,0x4444445
+    0.00 :   184a4:  jae    190bb <presieve::main+0x1c8b>
+    0.70 :   184aa:  or     BYTE PTR [rbx+rdi*1],0x40
+         : 1158  b += $step as usize;
+    0.00 :   184ae:  add    rdi,r8
+         : 1160  if b > to {
+    0.27 :   184b1:  cmp    rdi,rbp
+    0.00 :   184b4:  ja     186f8 <presieve::main+0x12c8>
+         : 1163  sieve[b] |= $mask;
+    0.00 :   184ba:  cmp    rdi,0x4444445
+    0.00 :   184c1:  jae    19011 <presieve::main+0x1be1>
+    0.77 :   184c7:  or     BYTE PTR [rbx+rdi*1],0x1
+         : 1167  b += $step as usize;
+    0.00 :   184cb:  add    rdi,r13
+         : 1169  if b > to {
+    0.10 :   184ce:  cmp    rdi,rbp
+    0.00 :   184d1:  ja     186f0 <presieve::main+0x12c0>
+         : 1172  sieve[b] |= $mask;
+    0.10 :   184d7:  cmp    rdi,0x4444445
+    0.00 :   184de:  jae    18f9a <presieve::main+0x1b6a>
+    0.63 :   184e4:  or     BYTE PTR [rbx+rdi*1],0x8
+         : 1176  b += $step as usize;
+    0.00 :   184e8:  add    rdi,rax
+         : 1178  if b > to {
+    0.20 :   184eb:  cmp    rdi,rbp
+    0.00 :   184ee:  ja     186e8 <presieve::main+0x12b8>
+         : 1181  sieve[b] |= $mask;
+    0.00 :   184f4:  cmp    rdi,0x4444445
+    0.00 :   184fb:  jae    18f34 <presieve::main+0x1b04>
+    0.70 :   18501:  or     BYTE PTR [rbx+rdi*1],0x10
+         : 1185  b += $step as usize;
+    0.00 :   18505:  add    rdi,r13
+         : 1187  if b > to {
+    0.03 :   18508:  cmp    rdi,rbp
+    0.00 :   1850b:  ja     186e0 <presieve::main+0x12b0>
+         : 1190  sieve[b] |= $mask;
+    0.03 :   18511:  cmp    rdi,0x4444445
+    0.00 :   18518:  jae    18e8a <presieve::main+0x1a5a>
+    0.53 :   1851e:  or     BYTE PTR [rbx+rdi*1],0x80
+         : 1194  b += $step as usize;
+    0.00 :   18522:  add    rdi,r8
+         : 1196  if b > to {
+    0.20 :   18525:  cmp    rdi,rbp
+    0.00 :   18528:  ja     186d8 <presieve::main+0x12a8>
+         : 1199  sieve[b] |= $mask;
+    0.00 :   1852e:  cmp    rdi,0x4444445
+    0.00 :   18535:  jae    18de0 <presieve::main+0x19b0>
+    0.53 :   1853b:  or     BYTE PTR [rbx+rdi*1],0x2
+         : 1203  b += $step as usize;
+    0.00 :   1853f:  add    rdi,rax
+         : 1205  if b > to {
+    0.07 :   18542:  cmp    rdi,rbp
+    0.00 :   18545:  ja     17ac5 <presieve::main+0x695>
+         : 1208  sieve[b] |= $mask;
+    0.00 :   1854b:  cmp    rdi,0x4444444
+    0.00 :   18552:  ja     18d50 <presieve::main+0x1920>
+    0.46 :   18558:  or     BYTE PTR [rbx+rdi*1],0x4
+         : 1212  b += $step as usize;
+    0.00 :   1855c:  add    rdi,r15
+    0.23 :   1855f:  xor    r12d,r12d
+         : 1215  if b > to {
+    0.00 :   18562:  cmp    rdi,rbp
+    0.00 :   18565:  jbe    18430 <presieve::main+0x1000>
+    0.00 :   1856b:  jmp    17ad0 <presieve::main+0x6a0>
+    0.17 :   18570:  lea    eax,[r15+r15*1]
+    0.00 :   18574:  lea    eax,[rax+rax*2]
+    0.00 :   18577:  add    eax,0x5
+    0.00 :   1857a:  movzx  eax,ax
+    0.00 :   1857d:  lea    ecx,[r15+r15*1+0x1]
+    0.00 :   18582:  movzx  r8d,cx
+    0.00 :   18586:  lea    ecx,[r15*4+0x3]
+    0.00 :   1858e:  movzx  r13d,cx
+    0.00 :   18592:  lea    ecx,[r15*4+0x4]
+    0.00 :   1859a:  movzx  r15d,cx
+    0.00 :   1859e:  xchg   ax,ax
+         : 1230  if s <= $n {
+    0.03 :   185a0:  test   r12b,r12b
+    0.37 :   185a3:  je     185f0 <presieve::main+0x11c0>
+    0.00 :   185a5:  movzx  ecx,r12b
+    0.00 :   185a9:  cmp    ecx,0x1
+    0.00 :   185ac:  je     1860d <presieve::main+0x11dd>
+    0.00 :   185ae:  cmp    r12b,0x3
+    0.00 :   185b2:  jb     1862a <presieve::main+0x11fa>
+    0.00 :   185b4:  je     18647 <presieve::main+0x1217>
+    0.00 :   185ba:  cmp    r12b,0x5
+    0.00 :   185be:  jb     18664 <presieve::main+0x1234>
+    0.03 :   185c4:  je     1867d <presieve::main+0x124d>
+    0.00 :   185ca:  cmp    r12b,0x7
+    0.00 :   185ce:  jb     18696 <presieve::main+0x1266>
+    0.03 :   185d4:  test   r12b,r12b
+    0.00 :   185d7:  je     185f0 <presieve::main+0x11c0>
+    0.00 :   185d9:  cmp    ecx,0x1
+    0.00 :   185dc:  je     1860d <presieve::main+0x11dd>
+    0.00 :   185de:  cmp    ecx,0x7
+    0.00 :   185e1:  jne    185ae <presieve::main+0x117e>
+    0.00 :   185e3:  jmp    186b3 <presieve::main+0x1283>
+    0.00 :   185e8:  nop    DWORD PTR [rax+rax*1+0x0]
+         : 1252  sieve[b] |= $mask;
+    0.00 :   185f0:  cmp    rdi,0x4444444
+    0.00 :   185f7:  ja     19121 <presieve::main+0x1cf1>
+    1.10 :   185fd:  or     BYTE PTR [rbx+rdi*1],0x20
+         : 1256  b += $step as usize;
+    0.00 :   18601:  add    rdi,rax
+         : 1258  if b > to {
+    0.00 :   18604:  cmp    rdi,rbp
+    0.00 :   18607:  ja     18700 <presieve::main+0x12d0>
+         : 1261  sieve[b] |= $mask;
+    0.07 :   1860d:  cmp    rdi,0x4444445
+    0.00 :   18614:  jae    190ee <presieve::main+0x1cbe>
+    1.17 :   1861a:  or     BYTE PTR [rbx+rdi*1],0x2
+         : 1265  b += $step as usize;
+    0.00 :   1861e:  add    rdi,r8
+         : 1267  if b > to {
+    0.23 :   18621:  cmp    rdi,rbp
+    0.00 :   18624:  ja     186f8 <presieve::main+0x12c8>
+         : 1270  sieve[b] |= $mask;
+    0.03 :   1862a:  cmp    rdi,0x4444445
+    0.00 :   18631:  jae    19033 <presieve::main+0x1c03>
+    0.83 :   18637:  or     BYTE PTR [rbx+rdi*1],0x40
+         : 1274  b += $step as usize;
+    0.00 :   1863b:  add    rdi,rax
+         : 1276  if b > to {
+    0.00 :   1863e:  cmp    rdi,rbp
+    0.00 :   18641:  ja     186f0 <presieve::main+0x12c0>
+         : 1279  sieve[b] |= $mask;
+    0.03 :   18647:  cmp    rdi,0x4444445
+    0.00 :   1864e:  jae    18f78 <presieve::main+0x1b48>
+    1.26 :   18654:  or     BYTE PTR [rbx+rdi*1],0x4
+         : 1283  b += $step as usize;
+    0.00 :   18658:  add    rdi,r13
+         : 1285  if b > to {
+    0.07 :   1865b:  cmp    rdi,rbp
+    0.00 :   1865e:  ja     186e8 <presieve::main+0x12b8>
+         : 1288  sieve[b] |= $mask;
+    0.00 :   18664:  cmp    rdi,0x4444445
+    0.00 :   1866b:  jae    18f12 <presieve::main+0x1ae2>
+    0.73 :   18671:  or     BYTE PTR [rbx+rdi*1],0x8
+         : 1292  b += $step as usize;
+    0.00 :   18675:  add    rdi,r8
+         : 1294  if b > to {
+    0.10 :   18678:  cmp    rdi,rbp
+    0.00 :   1867b:  ja     186e0 <presieve::main+0x12b0>
+         : 1297  sieve[b] |= $mask;
+    0.00 :   1867d:  cmp    rdi,0x4444445
+    0.00 :   18684:  jae    18e68 <presieve::main+0x1a38>
+    0.64 :   1868a:  or     BYTE PTR [rbx+rdi*1],0x80
+         : 1301  b += $step as usize;
+    0.00 :   1868e:  add    rdi,r15
+         : 1303  if b > to {
+    0.23 :   18691:  cmp    rdi,rbp
+    0.00 :   18694:  ja     186d8 <presieve::main+0x12a8>
+         : 1306  sieve[b] |= $mask;
+    0.00 :   18696:  cmp    rdi,0x4444445
+    0.00 :   1869d:  jae    18e46 <presieve::main+0x1a16>
+    0.77 :   186a3:  or     BYTE PTR [rbx+rdi*1],0x1
+         : 1310  b += $step as usize;
+    0.00 :   186a7:  add    rdi,r8
+         : 1312  if b > to {
+    0.23 :   186aa:  cmp    rdi,rbp
+    0.00 :   186ad:  ja     17ac5 <presieve::main+0x695>
+         : 1315  sieve[b] |= $mask;
+    0.00 :   186b3:  cmp    rdi,0x4444444
+    0.00 :   186ba:  ja     18dad <presieve::main+0x197d>
+    0.96 :   186c0:  or     BYTE PTR [rbx+rdi*1],0x10
+         : 1319  b += $step as usize;
+    0.00 :   186c4:  add    rdi,r13
+    0.07 :   186c7:  xor    r12d,r12d
+         : 1322  if b > to {
+    0.00 :   186ca:  cmp    rdi,rbp
+    0.00 :   186cd:  jbe    185a0 <presieve::main+0x1170>
+    0.00 :   186d3:  jmp    17ad0 <presieve::main+0x6a0>
+    0.07 :   186d8:  mov    r12b,0x6
+    0.00 :   186db:  jmp    17ad0 <presieve::main+0x6a0>
+    0.00 :   186e0:  mov    r12b,0x5
+    0.00 :   186e3:  jmp    17ad0 <presieve::main+0x6a0>
+    0.00 :   186e8:  mov    r12b,0x4
+    0.00 :   186eb:  jmp    17ad0 <presieve::main+0x6a0>
+    0.00 :   186f0:  mov    r12b,0x3
+    0.03 :   186f3:  jmp    17ad0 <presieve::main+0x6a0>
+    0.07 :   186f8:  mov    r12b,0x2
+    0.00 :   186fb:  jmp    17ad0 <presieve::main+0x6a0>
+    0.00 :   18700:  mov    r12b,0x1
+    0.00 :   18703:  jmp    17ad0 <presieve::main+0x6a0>
+    0.00 :   18708:  nop    DWORD PTR [rax+rax*1+0x0]
+         : 1339  let mut pos = from % len;
+    0.00 :   18710:  movabs rax,0x3d9e8be087460f13
+    0.00 :   1871a:  mulx   rax,rax,rax
+    0.00 :   1871f:  imul   r9,QWORD PTR [rsp+0x68],0xfffffffffffe7960
+    0.00 :   18728:  shr    rax,0xc
+    0.00 :   1872c:  imul   rax,rax,0x4279
+    0.00 :   18733:  mov    rdi,rdx
+    0.00 :   18736:  sub    rdi,rax
+    0.00 :   18739:  mov    rax,QWORD PTR [rsp+0x18]
+    0.00 :   1873e:  add    rax,QWORD PTR [rsp+0x70]
+    0.00 :   18743:  mov    QWORD PTR [rsp+0x18],rax
+    0.00 :   18748:  xor    r15d,r15d
+    0.00 :   1874b:  mov    QWORD PTR [rsp+0x108],r9
+    0.00 :   18753:  jmp    18771 <presieve::main+0x1341>
+    0.00 :   18755:  data16 cs nop WORD PTR [rax+rax*1+0x0]
+         : 1354  offset += min_len;
+    0.00 :   18760:  add    r15,r12
+    0.00 :   18763:  mov    edi,0x0
+         : 1357  while offset < last {
+    0.00 :   18768:  cmp    r15,r8
+    0.00 :   1876b:  jae    17a9d <presieve::main+0x66d>
+         : 1360  let min_len = (last - offset).min(len - pos);
+    0.00 :   18771:  mov    r12,r8
+    0.00 :   18774:  sub    r12,r15
+    0.00 :   18777:  mov    r11d,0x4279
+    0.00 :   1877d:  sub    r11,rdi
+    0.00 :   18780:  cmp    r11,r12
+    0.00 :   18783:  cmovb  r12,r11
+    0.00 :   18787:  test   r12,r12
+    0.00 :   1878a:  je     18760 <presieve::main+0x1330>
+    0.00 :   1878c:  lea    r13,[r15+rdx*1]
+    0.00 :   18790:  cmp    r13,0x4444446
+    0.00 :   18797:  mov    esi,0x4444445
+    0.00 :   1879c:  cmovae rsi,r13
+    0.00 :   187a0:  add    rsi,r9
+    0.00 :   187a3:  sub    rsi,r15
+    0.00 :   187a6:  cmp    rsi,r11
+    0.00 :   187a9:  cmovae rsi,r11
+    0.00 :   187ad:  lea    rax,[r12-0x1]
+    0.00 :   187b2:  cmp    rsi,rax
+    0.00 :   187b5:  cmovae rsi,rax
+    0.00 :   187b9:  inc    rsi
+    0.00 :   187bc:  cmp    rsi,0x80
+    0.00 :   187c3:  ja     187d0 <presieve::main+0x13a0>
+    0.00 :   187c5:  xor    esi,esi
+    0.00 :   187c7:  jmp    18893 <presieve::main+0x1463>
+    0.00 :   187cc:  nop    DWORD PTR [rax+0x0]
+    0.00 :   187d0:  mov    edx,esi
+    0.00 :   187d2:  and    edx,0x7f
+    0.00 :   187d5:  mov    eax,0x80
+    0.00 :   187da:  cmove  rdx,rax
+    0.00 :   187de:  sub    rsi,rdx
+    0.00 :   187e1:  mov    r9,r10
+    0.00 :   187e4:  add    r10,rdi
+    0.00 :   187e7:  mov    rax,QWORD PTR [rsp+0x80]
+    0.00 :   187ef:  lea    rcx,[rax+r15*1]
+    0.00 :   187f3:  cmp    r13,0x4444446
+    0.00 :   187fa:  mov    r14d,0x4444445
+    0.00 :   18800:  cmovae r14,r13
+    0.00 :   18804:  add    r14,QWORD PTR [rsp+0x78]
+    0.00 :   18809:  sub    r14,r15
+    0.00 :   1880c:  mov    rax,QWORD PTR [rsp+0x18]
+    0.00 :   18811:  sub    rax,r15
+    0.00 :   18814:  cmp    rax,r11
+    0.00 :   18817:  cmovae rax,r11
+    0.00 :   1881b:  dec    rax
+    0.00 :   1881e:  cmp    r14,rax
+    0.00 :   18821:  cmovb  rax,r14
+    0.00 :   18825:  cmp    rax,r11
+    0.00 :   18828:  cmovae rax,r11
+    0.00 :   1882c:  sub    rax,rdx
+    0.00 :   1882f:  inc    rax
+    0.00 :   18832:  xor    edx,edx
+    0.03 :   18834:  data16 data16 cs nop WORD PTR [rax+rax*1+0x0]
+         : 1413  sieve[from + offset + i] = presieve[pos + i];
+    0.00 :   18840:  vmovupd ymm0,YMMWORD PTR [r10+rdx*1-0x60]
+    0.00 :   18847:  vmovupd ymm1,YMMWORD PTR [r10+rdx*1-0x40]
+    0.03 :   1884e:  vmovupd ymm2,YMMWORD PTR [r10+rdx*1-0x20]
+    0.00 :   18855:  vmovups ymm3,YMMWORD PTR [r10+rdx*1]
+    0.07 :   1885b:  vmovupd YMMWORD PTR [rcx+rdx*1-0x60],ymm0
+    0.03 :   18861:  vmovupd YMMWORD PTR [rcx+rdx*1-0x40],ymm1
+    0.00 :   18867:  vmovupd YMMWORD PTR [rcx+rdx*1-0x20],ymm2
+    0.10 :   1886d:  vmovups YMMWORD PTR [rcx+rdx*1],ymm3
+    0.00 :   18872:  sub    rdx,0xffffffffffffff80
+    0.00 :   18876:  cmp    rax,rdx
+    0.00 :   18879:  jne    18840 <presieve::main+0x1410>
+    0.00 :   1887b:  mov    r14,QWORD PTR [rsp+0x100]
+    0.00 :   18883:  mov    r10,r9
+    0.00 :   18886:  mov    rdx,QWORD PTR [rsp+0x30]
+    0.00 :   1888b:  mov    r9,QWORD PTR [rsp+0x108]
+    0.00 :   18893:  add    r13,rsi
+    0.00 :   18896:  add    rdi,rsi
+    0.00 :   18899:  mov    rcx,QWORD PTR [rsp+0x18]
+    0.00 :   1889e:  sub    rcx,r15
+    0.00 :   188a1:  cmp    rcx,r11
+    0.00 :   188a4:  cmovae rcx,r11
+    0.00 :   188a8:  sub    rcx,rsi
+    0.00 :   188ab:  nop    DWORD PTR [rax+rax*1+0x0]
+    0.00 :   188b0:  cmp    rdi,0x4278
+    0.00 :   188b7:  ja     18d11 <presieve::main+0x18e1>
+    0.00 :   188bd:  cmp    r13,0x4444444
+    0.00 :   188c4:  ja     18cf2 <presieve::main+0x18c2>
+    0.00 :   188ca:  movzx  eax,BYTE PTR [r14+rdi*1]
+    0.03 :   188cf:  mov    BYTE PTR [rbx+r13*1],al
+    0.00 :   188d3:  inc    r13
+    0.00 :   188d6:  inc    rdi
+    0.00 :   188d9:  dec    rcx
+    0.00 :   188dc:  jne    188b0 <presieve::main+0x1480>
+    0.00 :   188de:  jmp    18760 <presieve::main+0x1330>
+    0.00 :   188e3:  data16 data16 data16 cs nop WORD PTR [rax+rax*1+0x0]
+    0.00 :   188f0:  test   rax,rax
+    0.00 :   188f3:  jne    17a43 <presieve::main+0x613>
+         : 1451  sieve[0] |= BIT_MASK[1];
+    0.00 :   188f9:  movzx  eax,BYTE PTR [rbx]
+         : 1453  sieve[k] &= !BIT_MASK[r];
+    0.00 :   188fc:  and    al,0xe0
+    0.00 :   188fe:  inc    al
+    0.00 :   18900:  mov    BYTE PTR [rbx],al
+    0.00 :   18902:  mov    rdi,QWORD PTR [rsp]
+    0.00 :   18906:  mov    rsi,QWORD PTR [rsp+0xe0]
+    0.00 :   1890e:  test   rsi,rsi
+    0.00 :   18911:  jne    18947 <presieve::main+0x1517>
+    0.00 :   18913:  jmp    18959 <presieve::main+0x1529>
+         : 1462  sieve[0] |= BIT_MASK[1];
+    0.00 :   18915:  movzx  eax,BYTE PTR [rbx]
+         : 1464  sieve[k] &= !BIT_MASK[r];
+    0.00 :   18918:  and    al,0xe0
+    0.00 :   1891a:  inc    al
+    0.00 :   1891c:  mov    BYTE PTR [rbx],al
+    0.00 :   1891e:  mov    edx,0x4
+    0.00 :   18923:  mov    rdi,QWORD PTR [rsp+0x10]
+    0.00 :   18928:  mov    rsi,QWORD PTR [rsp+0x8]
+    0.00 :   1892d:  vzeroupper
+    0.00 :   18930:  call   QWORD PTR [rip+0x48c62]        # 61598 <_DYNAMIC+0x250>
+    0.00 :   18936:  mov    rdi,QWORD PTR [rsp]
+    0.00 :   1893a:  mov    rsi,QWORD PTR [rsp+0xe0]
+    0.00 :   18942:  test   rsi,rsi
+    0.00 :   18945:  je     18959 <presieve::main+0x1529>
+    0.00 :   18947:  shl    rsi,0x3
+    0.00 :   1894b:  mov    edx,0x8
+    0.00 :   18950:  vzeroupper
+    0.00 :   18953:  call   QWORD PTR [rip+0x48c3f]        # 61598 <_DYNAMIC+0x250>
+    0.00 :   18959:  mov    r13d,0x1
+    0.00 :   1895f:  mov    esi,0x4279
+    0.00 :   18964:  mov    edx,0x1
+    0.00 :   18969:  mov    rdi,r14
+    0.00 :   1896c:  vzeroupper
+    0.00 :   1896f:  call   QWORD PTR [rip+0x48c23]        # 61598 <_DYNAMIC+0x250>
+         : 1487  let sieve = sieve(N);
+         : 1488  let t_sieve = std::time::Instant::now();
+    0.00 :   18975:  call   QWORD PTR [rip+0x48c4d]        # 615c8 <_DYNAMIC+0x280>
+    0.00 :   1897b:  mov    DWORD PTR [rsp+0x30],edx
+    0.00 :   1897f:  mov    QWORD PTR [rsp+0x18],rax
+    0.00 :   18984:  prefetcht0 BYTE PTR [rbx+0x273ef07]
+    0.00 :   1898b:  prefetcht0 BYTE PTR [rbx+0xa399c9]
+    0.00 :   18992:  prefetcht0 BYTE PTR [rbx+0x31788d0]
+    0.00 :   18999:  prefetcht0 BYTE PTR [rbx+0x1473393]
+    0.00 :   189a0:  prefetcht0 BYTE PTR [rbx+0x3bb229a]
+    0.00 :   189a7:  prefetcht0 BYTE PTR [rbx+0x1eacd5d]
+    0.00 :   189ae:  prefetcht0 BYTE PTR [rbx+0x1a781f]
+    0.00 :   189b5:  prefetcht0 BYTE PTR [rbx+0x28e6726]
+    0.00 :   189bc:  prefetcht0 BYTE PTR [rbx+0xbe11e9]
+    0.00 :   189c3:  prefetcht0 BYTE PTR [rbx+0x33200f0]
+    0.00 :   189ca:  prefetcht0 BYTE PTR [rbx+0x161abb3]
+    0.00 :   189d1:  prefetcht0 BYTE PTR [rbx+0x3d59aba]
+    0.00 :   189d8:  prefetcht0 BYTE PTR [rbx+0x205457d]
+    0.00 :   189df:  prefetcht0 BYTE PTR [rbx+0x34f03f]
+    0.00 :   189e6:  prefetcht0 BYTE PTR [rbx+0x2a8df46]
+    0.00 :   189ed:  prefetcht0 BYTE PTR [rbx+0xd88a09]
+    0.00 :   189f4:  prefetcht0 BYTE PTR [rbx+0x34c7910]
+    0.00 :   189fb:  prefetcht0 BYTE PTR [rbx+0x17c23d3]
+    0.00 :   18a02:  prefetcht0 BYTE PTR [rbx+0x3f012da]
+    0.00 :   18a09:  prefetcht0 BYTE PTR [rbx+0x21fbd9d]
+    0.00 :   18a10:  mov    r12d,0x1fca055
+    0.00 :   18a16:  mov    r14d,0x88888889
+    0.00 :   18a1c:  lea    rdi,[rsp+0xb8]
+    0.00 :   18a24:  lea    rsi,[rsp+0x88]
+    0.00 :   18a2c:  mov    r15d,0x2c
+    0.00 :   18a32:  data16 data16 data16 data16 cs nop WORD PTR [rax+rax*1+0x0]
+         : 1518  }
+         : 1519  }
+         :
+         : 1521  for _ in 0..M {
+         : 1522  let future_a = (a + PREFETCH_OFFSET) % N;
+         : 1523  unsafe { prefetch(sieve_ptr.add(future_a / WHEEL_SIZE)) };
+    0.17 :   18a40:  lea    eax,[r13+0x94e3b3a]
+    0.35 :   18a47:  and    eax,0x7ffffffe
+    0.31 :   18a4c:  imul   rax,r14
+    0.24 :   18a50:  shr    rax,0x24
+   23.71 :   18a54:  prefetcht0 BYTE PTR [rbx+rax*1]
+         : 1529  if a == 2 || a == 3 || a == 5 {
+    0.00 :   18a58:  cmp    r13,0x5
+    0.00 :   18a5c:  ja     18ac0 <presieve::main+0x1690>
+    0.00 :   18a5e:  bt     r15,r13
+    0.00 :   18a62:  jae    18ac0 <presieve::main+0x1690>
+    0.00 :   18a64:  mov    al,0x31
+         :
+         : 1536  let c = if is_prime(a) { b'1' } else { b'0' };
+         : 1537  out.write_all(&[c])?;
+    0.31 :   18a66:  mov    BYTE PTR [rsp+0x88],al
+    0.10 :   18a6d:  mov    rdx,QWORD PTR [rsp+0xb8]
+    0.31 :   18a75:  mov    rcx,QWORD PTR [rsp+0xc8]
+    0.31 :   18a7d:  sub    rdx,rcx
+    0.10 :   18a80:  cmp    rdx,0x1
+    0.00 :   18a84:  jbe    18afd <presieve::main+0x16cd>
+    0.17 :   18a86:  mov    rdx,QWORD PTR [rsp+0xc0]
+    0.66 :   18a8e:  mov    BYTE PTR [rdx+rcx*1],al
+    0.56 :   18a91:  inc    rcx
+    0.03 :   18a94:  mov    QWORD PTR [rsp+0xc8],rcx
+         :
+         : 1549  a = (a + D) % N;
+    0.31 :   18a9c:  add    r13d,0x499602d2
+    0.45 :   18aa3:  and    r13d,0x7fffffff
+    0.00 :   18aaa:  dec    r12
+    0.56 :   18aad:  jne    18a40 <presieve::main+0x1610>
+    0.00 :   18aaf:  jmp    18b28 <presieve::main+0x16f8>
+    0.00 :   18ab1:  data16 data16 data16 data16 data16 cs nop WORD PTR [rax+rax*1+0x0]
+         : 1556  b => (sieve[a / WHEEL_SIZE] & b) == 0,
+    0.10 :   18ac0:  mov    ecx,r13d
+    0.17 :   18ac3:  imul   rcx,r14
+    0.63 :   18ac7:  shr    rcx,0x24
+    0.00 :   18acb:  mov    eax,ecx
+    0.17 :   18acd:  shl    eax,0x5
+    0.14 :   18ad0:  lea    edx,[rcx+rcx*1]
+    0.70 :   18ad3:  sub    edx,eax
+    0.10 :   18ad5:  add    edx,r13d
+         : 1565  match BIT_MASK[r] {
+    0.10 :   18ad8:  lea    rax,[rip+0xffffffffffff04b5]        # 8f94 <GCC_except_table365+0x2d0>
+    0.17 :   18adf:  movzx  edx,BYTE PTR [rdx+rax*1]
+    0.84 :   18ae3:  mov    al,0x30
+    0.03 :   18ae5:  test   dl,dl
+    0.00 :   18ae7:  je     18a66 <presieve::main+0x1636>
+         : 1571  b => (sieve[a / WHEEL_SIZE] & b) == 0,
+    0.17 :   18aed:  mov    ecx,ecx
+    0.38 :   18aef:  test   BYTE PTR [rbx+rcx*1],dl
+         : 1574  let c = if is_prime(a) { b'1' } else { b'0' };
+    1.92 :   18af2:  jne    18a66 <presieve::main+0x1636>
+    0.03 :   18af8:  jmp    18a64 <presieve::main+0x1634>
+    0.00 :   18afd:  mov    edx,0x1
+    0.00 :   18b02:  call   19540 <std::io::buffered::bufwriter::BufWriter<W>::write_all_cold>
+         : 1579  out.write_all(&[c])?;
+    0.00 :   18b07:  mov    rbp,rax
+    0.00 :   18b0a:  test   rax,rax
+    0.00 :   18b0d:  lea    rdi,[rsp+0xb8]
+    0.00 :   18b15:  lea    rsi,[rsp+0x88]
+    0.00 :   18b1d:  je     18a9c <presieve::main+0x166c>
+    0.00 :   18b23:  jmp    18c8e <presieve::main+0x185e>
+         : 1586  }
+         :
+         : 1588  let t_end = std::time::Instant::now();
+    0.00 :   18b28:  call   QWORD PTR [rip+0x48a9a]        # 615c8 <_DYNAMIC+0x280>
+    0.00 :   18b2e:  mov    r14,QWORD PTR [rsp+0x18]
+    0.00 :   18b33:  mov    ebp,DWORD PTR [rsp+0x30]
+    0.00 :   18b37:  mov    r12,rax
+    0.00 :   18b3a:  mov    r13d,edx
+         :
+         : 1595  let sieve_ms = (t_sieve - t_start).as_secs_f64() * 1000.0;
+    0.00 :   18b3d:  mov    rdi,r14
+    0.00 :   18b40:  mov    esi,ebp
+    0.00 :   18b42:  mov    rdx,QWORD PTR [rsp+0x60]
+    0.00 :   18b47:  mov    ecx,DWORD PTR [rsp+0x2c]
+    0.00 :   18b4b:  call   QWORD PTR [rip+0x48a87]        # 615d8 <_DYNAMIC+0x290>
+    0.00 :   18b51:  vmovq  xmm0,rax
+    0.00 :   18b56:  vpunpckldq xmm0,xmm0,XMMWORD PTR [rip+0xffffffffffff01f2]        # 8d50 <GCC_except_table365+0x8c>
+    0.00 :   18b5e:  vsubpd xmm0,xmm0,XMMWORD PTR [rip+0xffffffffffff017a]        # 8ce0 <GCC_except_table365+0x1c>
+    0.00 :   18b66:  vshufpd xmm1,xmm0,xmm0,0x1
+    0.00 :   18b6b:  vcvtsi2sd xmm2,xmm15,edx
+    0.00 :   18b6f:  vdivsd xmm2,xmm2,QWORD PTR [rip+0xffffffffffff0399]        # 8f10 <GCC_except_table365+0x24c>
+    0.00 :   18b77:  vaddsd xmm0,xmm1,xmm0
+    0.00 :   18b7b:  vaddsd xmm0,xmm2,xmm0
+    0.00 :   18b7f:  vmulsd xmm0,xmm0,QWORD PTR [rip+0xffffffffffff03c9]        # 8f50 <GCC_except_table365+0x28c>
+    0.00 :   18b87:  vmovsd QWORD PTR [rsp+0x40],xmm0
+         : 1611  let lookup_ms = (t_end - t_sieve).as_secs_f64() * 1000.0;
+    0.00 :   18b8d:  mov    rdi,r12
+    0.00 :   18b90:  mov    esi,r13d
+    0.00 :   18b93:  mov    rdx,r14
+    0.00 :   18b96:  mov    ecx,ebp
+    0.00 :   18b98:  call   QWORD PTR [rip+0x48a3a]        # 615d8 <_DYNAMIC+0x290>
+    0.00 :   18b9e:  vmovq  xmm0,rax
+    0.00 :   18ba3:  vpunpckldq xmm0,xmm0,XMMWORD PTR [rip+0xffffffffffff01a5]        # 8d50 <GCC_except_table365+0x8c>
+    0.00 :   18bab:  vsubpd xmm0,xmm0,XMMWORD PTR [rip+0xffffffffffff012d]        # 8ce0 <GCC_except_table365+0x1c>
+    0.00 :   18bb3:  vshufpd xmm1,xmm0,xmm0,0x1
+    0.00 :   18bb8:  vcvtsi2sd xmm2,xmm15,edx
+    0.00 :   18bbc:  vdivsd xmm2,xmm2,QWORD PTR [rip+0xffffffffffff034c]        # 8f10 <GCC_except_table365+0x24c>
+    0.00 :   18bc4:  vaddsd xmm0,xmm1,xmm0
+    0.00 :   18bc8:  vaddsd xmm0,xmm2,xmm0
+    0.00 :   18bcc:  vmulsd xmm0,xmm0,QWORD PTR [rip+0xffffffffffff037c]        # 8f50 <GCC_except_table365+0x28c>
+    0.00 :   18bd4:  vmovsd QWORD PTR [rsp+0xe0],xmm0
+         : 1627  let total_ms = (t_end - t_start).as_secs_f64() * 1000.0;
+    0.00 :   18bdd:  mov    rdi,r12
+    0.00 :   18be0:  mov    esi,r13d
+    0.00 :   18be3:  mov    rdx,QWORD PTR [rsp+0x60]
+    0.00 :   18be8:  mov    ecx,DWORD PTR [rsp+0x2c]
+    0.00 :   18bec:  call   QWORD PTR [rip+0x489e6]        # 615d8 <_DYNAMIC+0x290>
+    0.00 :   18bf2:  vmovq  xmm0,rax
+    0.00 :   18bf7:  vpunpckldq xmm0,xmm0,XMMWORD PTR [rip+0xffffffffffff0151]        # 8d50 <GCC_except_table365+0x8c>
+    0.00 :   18bff:  vsubpd xmm0,xmm0,XMMWORD PTR [rip+0xffffffffffff00d9]        # 8ce0 <GCC_except_table365+0x1c>
+    0.00 :   18c07:  vshufpd xmm1,xmm0,xmm0,0x1
+    0.00 :   18c0c:  vaddsd xmm0,xmm1,xmm0
+    0.00 :   18c10:  vcvtsi2sd xmm1,xmm15,edx
+    0.00 :   18c14:  vdivsd xmm1,xmm1,QWORD PTR [rip+0xffffffffffff02f4]        # 8f10 <GCC_except_table365+0x24c>
+    0.00 :   18c1c:  vaddsd xmm0,xmm1,xmm0
+    0.00 :   18c20:  vmulsd xmm0,xmm0,QWORD PTR [rip+0xffffffffffff0328]        # 8f50 <GCC_except_table365+0x28c>
+    0.00 :   18c28:  vmovsd QWORD PTR [rsp+0x48],xmm0
+         :
+         : 1644  eprintln!("sieve: {sieve_ms:.1} ms, lookup: {lookup_ms:.1} ms, total: {total_ms:.1} ms");
+    0.00 :   18c2e:  lea    rax,[rsp+0x40]
+    0.00 :   18c33:  mov    QWORD PTR [rsp+0x88],rax
+    0.00 :   18c3b:  mov    rax,QWORD PTR [rip+0x4899e]        # 615e0 <_DYNAMIC+0x298>
+    0.00 :   18c42:  mov    QWORD PTR [rsp+0x90],rax
+    0.00 :   18c4a:  lea    rcx,[rsp+0xe0]
+    0.00 :   18c52:  mov    QWORD PTR [rsp+0x98],rcx
+    0.00 :   18c5a:  mov    QWORD PTR [rsp+0xa0],rax
+    0.00 :   18c62:  lea    rcx,[rsp+0x48]
+    0.00 :   18c67:  mov    QWORD PTR [rsp+0xa8],rcx
+    0.00 :   18c6f:  mov    QWORD PTR [rsp+0xb0],rax
+    0.00 :   18c77:  lea    rdi,[rip+0xffffffffffff1b1b]        # a799 <anon.582c9fcf13deb79ffa5df965959e3b37.1.llvm.13545896172282194114+0x130d>
+    0.00 :   18c7e:  lea    rsi,[rsp+0x88]
+    0.00 :   18c86:  call   QWORD PTR [rip+0x4895c]        # 615e8 <_DYNAMIC+0x2a0>
+    0.00 :   18c8c:  xor    ebp,ebp
+    0.00 :   18c8e:  mov    esi,0x4444445
+    0.00 :   18c93:  mov    edx,0x1
+    0.00 :   18c98:  mov    rdi,rbx
+    0.00 :   18c9b:  call   QWORD PTR [rip+0x488f7]        # 61598 <_DYNAMIC+0x250>
+    0.00 :   18ca1:  lea    rdi,[rsp+0xb8]
+         :
+         : 1665  Ok(())
+         : 1666  }
+    0.00 :   18ca9:  call   173a0 <core::ptr::drop_in_place<std::io::buffered::bufwriter::BufWriter<std::io::stdio::StdoutLock>>>
+    0.00 :   18cae:  mov    rax,rbp
+    0.00 :   18cb1:  add    rsp,0x118
+    0.00 :   18cb8:  pop    rbx
+    0.00 :   18cb9:  pop    r12
+    0.00 :   18cbb:  pop    r13
+    0.00 :   18cbd:  pop    r14
+    0.00 :   18cbf:  pop    r15
+    0.00 :   18cc1:  pop    rbp
+    0.00 :   18cc2:  ret
+         : 1677  _ => unreachable!(),
+    0.00 :   18cc3:  lea    rdi,[rip+0xffffffffffff1aa7]        # a771 <anon.582c9fcf13deb79ffa5df965959e3b37.1.llvm.13545896172282194114+0x12e5>
+    0.00 :   18cca:  lea    rdx,[rip+0x463df]        # 5f0b0 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x628>
+    0.00 :   18cd1:  mov    esi,0x28
+    0.00 :   18cd6:  mov    r12,QWORD PTR [rsp]
+    0.00 :   18cda:  mov    r13,QWORD PTR [rsp+0x8]
+    0.00 :   18cdf:  mov    rbp,QWORD PTR [rsp+0x10]
+    0.00 :   18ce4:  vzeroupper
+    0.00 :   18ce7:  call   QWORD PTR [rip+0x48903]        # 615f0 <_DYNAMIC+0x2a8>
+    0.00 :   18ced:  jmp    191df <presieve::main+0x1daf>
+    0.00 :   18cf2:  mov    esi,0x4444445
+    0.00 :   18cf7:  mov    rdi,r13
+    0.00 :   18cfa:  lea    rdx,[rip+0x463df]        # 5f0e0 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x658>
+    0.00 :   18d01:  mov    r12,QWORD PTR [rsp]
+    0.00 :   18d05:  mov    r13,QWORD PTR [rsp+0x8]
+    0.00 :   18d0a:  mov    rbp,QWORD PTR [rsp+0x10]
+         : 1693  sieve[b] |= $mask;
+    0.00 :   18d0f:  jmp    18d2b <presieve::main+0x18fb>
+    0.00 :   18d11:  mov    esi,0x4279
+    0.00 :   18d16:  mov    r12,QWORD PTR [rsp]
+    0.00 :   18d1a:  mov    r13,QWORD PTR [rsp+0x8]
+    0.00 :   18d1f:  mov    rbp,QWORD PTR [rsp+0x10]
+    0.00 :   18d24:  lea    rdx,[rip+0x4639d]        # 5f0c8 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x640>
+    0.00 :   18d2b:  vzeroupper
+    0.00 :   18d2e:  call   QWORD PTR [rip+0x48854]        # 61588 <_DYNAMIC+0x240>
+    0.00 :   18d34:  jmp    191df <presieve::main+0x1daf>
+    0.00 :   18d39:  lea    rdx,[rip+0x45d58]        # 5ea98 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x10>
+    0.00 :   18d40:  mov    esi,0xb505
+    0.00 :   18d45:  call   QWORD PTR [rip+0x4883d]        # 61588 <_DYNAMIC+0x240>
+    0.00 :   18d4b:  jmp    191df <presieve::main+0x1daf>
+    0.00 :   18d50:  mov    esi,0x4444445
+    0.00 :   18d55:  lea    rdx,[rip+0x460fc]        # 5ee58 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x3d0>
+    0.00 :   18d5c:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18d5e:  mov    esi,0x4444445
+    0.00 :   18d63:  lea    rdx,[rip+0x4602e]        # 5ed98 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x310>
+    0.00 :   18d6a:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18d6c:  mov    esi,0x4444445
+    0.00 :   18d71:  lea    rdx,[rip+0x45f60]        # 5ecd8 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x250>
+    0.00 :   18d78:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18d7a:  mov    esi,0x4444445
+    0.00 :   18d7f:  lea    rdx,[rip+0x45e92]        # 5ec18 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x190>
+    0.00 :   18d86:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18d8b:  mov    esi,0x4444445
+    0.00 :   18d90:  lea    rdx,[rip+0x46301]        # 5f098 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x610>
+    0.00 :   18d97:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18d9c:  mov    esi,0x4444445
+    0.00 :   18da1:  lea    rdx,[rip+0x45db0]        # 5eb58 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0xd0>
+    0.00 :   18da8:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18dad:  mov    esi,0x4444445
+    0.00 :   18db2:  lea    rdx,[rip+0x4621f]        # 5efd8 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x550>
+    0.00 :   18db9:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18dbe:  mov    esi,0x4444445
+    0.00 :   18dc3:  lea    rdx,[rip+0x4614e]        # 5ef18 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x490>
+    0.00 :   18dca:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18dcf:  mov    esi,0x4444445
+    0.00 :   18dd4:  lea    rdx,[rip+0x46125]        # 5ef00 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x478>
+    0.00 :   18ddb:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18de0:  mov    esi,0x4444445
+    0.00 :   18de5:  lea    rdx,[rip+0x46054]        # 5ee40 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x3b8>
+    0.00 :   18dec:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18df1:  mov    esi,0x4444445
+    0.00 :   18df6:  lea    rdx,[rip+0x45f83]        # 5ed80 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x2f8>
+    0.00 :   18dfd:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18e02:  mov    esi,0x4444445
+    0.00 :   18e07:  lea    rdx,[rip+0x45eb2]        # 5ecc0 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x238>
+    0.00 :   18e0e:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18e13:  mov    esi,0x4444445
+    0.00 :   18e18:  lea    rdx,[rip+0x45de1]        # 5ec00 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x178>
+    0.00 :   18e1f:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18e24:  mov    esi,0x4444445
+    0.00 :   18e29:  lea    rdx,[rip+0x45d10]        # 5eb40 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0xb8>
+    0.00 :   18e30:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18e35:  mov    esi,0x4444445
+    0.00 :   18e3a:  lea    rdx,[rip+0x4623f]        # 5f080 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x5f8>
+    0.00 :   18e41:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18e46:  mov    esi,0x4444445
+    0.00 :   18e4b:  lea    rdx,[rip+0x4616e]        # 5efc0 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x538>
+    0.00 :   18e52:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18e57:  mov    esi,0x4444445
+    0.00 :   18e5c:  lea    rdx,[rip+0x46205]        # 5f068 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x5e0>
+    0.00 :   18e63:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18e68:  mov    esi,0x4444445
+    0.00 :   18e6d:  lea    rdx,[rip+0x46134]        # 5efa8 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x520>
+    0.00 :   18e74:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18e79:  mov    esi,0x4444445
+    0.00 :   18e7e:  lea    rdx,[rip+0x46063]        # 5eee8 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x460>
+    0.00 :   18e85:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18e8a:  mov    esi,0x4444445
+    0.00 :   18e8f:  lea    rdx,[rip+0x45f92]        # 5ee28 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x3a0>
+    0.00 :   18e96:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18e9b:  mov    esi,0x4444445
+    0.00 :   18ea0:  lea    rdx,[rip+0x45ec1]        # 5ed68 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x2e0>
+    0.00 :   18ea7:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18eac:  mov    esi,0x4444445
+    0.00 :   18eb1:  lea    rdx,[rip+0x45df0]        # 5eca8 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x220>
+    0.00 :   18eb8:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18ebd:  mov    esi,0x4444445
+    0.00 :   18ec2:  lea    rdx,[rip+0x45d1f]        # 5ebe8 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x160>
+    0.00 :   18ec9:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18ece:  mov    esi,0x4444445
+    0.00 :   18ed3:  lea    rdx,[rip+0x45c4e]        # 5eb28 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0xa0>
+    0.00 :   18eda:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18edf:  mov    esi,0x4444445
+    0.00 :   18ee4:  lea    rdx,[rip+0x45ce5]        # 5ebd0 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x148>
+    0.00 :   18eeb:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18ef0:  mov    esi,0x4444445
+    0.00 :   18ef5:  lea    rdx,[rip+0x45c14]        # 5eb10 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x88>
+    0.00 :   18efc:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18f01:  mov    esi,0x4444445
+    0.00 :   18f06:  lea    rdx,[rip+0x46143]        # 5f050 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x5c8>
+    0.00 :   18f0d:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18f12:  mov    esi,0x4444445
+    0.00 :   18f17:  lea    rdx,[rip+0x46072]        # 5ef90 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x508>
+    0.00 :   18f1e:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18f23:  mov    esi,0x4444445
+    0.00 :   18f28:  lea    rdx,[rip+0x45fa1]        # 5eed0 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x448>
+    0.00 :   18f2f:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18f34:  mov    esi,0x4444445
+    0.00 :   18f39:  lea    rdx,[rip+0x45ed0]        # 5ee10 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x388>
+    0.00 :   18f40:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18f45:  mov    esi,0x4444445
+    0.00 :   18f4a:  lea    rdx,[rip+0x45dff]        # 5ed50 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x2c8>
+    0.00 :   18f51:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18f56:  mov    esi,0x4444445
+    0.00 :   18f5b:  lea    rdx,[rip+0x45d2e]        # 5ec90 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x208>
+    0.00 :   18f62:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18f67:  mov    esi,0x4444445
+    0.00 :   18f6c:  lea    rdx,[rip+0x460c5]        # 5f038 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x5b0>
+    0.00 :   18f73:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18f78:  mov    esi,0x4444445
+    0.00 :   18f7d:  lea    rdx,[rip+0x45ff4]        # 5ef78 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x4f0>
+    0.00 :   18f84:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18f89:  mov    esi,0x4444445
+    0.00 :   18f8e:  lea    rdx,[rip+0x45f23]        # 5eeb8 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x430>
+    0.00 :   18f95:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18f9a:  mov    esi,0x4444445
+    0.00 :   18f9f:  lea    rdx,[rip+0x45e52]        # 5edf8 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x370>
+    0.00 :   18fa6:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18fab:  mov    esi,0x4444445
+    0.00 :   18fb0:  lea    rdx,[rip+0x45d81]        # 5ed38 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x2b0>
+    0.00 :   18fb7:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18fbc:  mov    esi,0x4444445
+    0.00 :   18fc1:  lea    rdx,[rip+0x45cb0]        # 5ec78 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x1f0>
+    0.00 :   18fc8:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18fcd:  mov    esi,0x4444445
+    0.00 :   18fd2:  lea    rdx,[rip+0x45bdf]        # 5ebb8 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x130>
+    0.00 :   18fd9:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18fde:  mov    esi,0x4444445
+    0.00 :   18fe3:  lea    rdx,[rip+0x45b0e]        # 5eaf8 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x70>
+    0.00 :   18fea:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   18fef:  mov    esi,0x4444445
+    0.00 :   18ff4:  lea    rdx,[rip+0x45d25]        # 5ed20 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x298>
+    0.00 :   18ffb:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   19000:  mov    esi,0x4444445
+    0.00 :   19005:  lea    rdx,[rip+0x45e94]        # 5eea0 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x418>
+    0.00 :   1900c:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   19011:  mov    esi,0x4444445
+    0.00 :   19016:  lea    rdx,[rip+0x45dc3]        # 5ede0 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x358>
+    0.00 :   1901d:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   19022:  mov    esi,0x4444445
+    0.00 :   19027:  lea    rdx,[rip+0x45ff2]        # 5f020 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x598>
+    0.00 :   1902e:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   19033:  mov    esi,0x4444445
+    0.00 :   19038:  lea    rdx,[rip+0x45f21]        # 5ef60 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x4d8>
+    0.00 :   1903f:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   19044:  mov    esi,0x4444445
+    0.00 :   19049:  lea    rdx,[rip+0x45a90]        # 5eae0 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x58>
+    0.00 :   19050:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   19055:  mov    esi,0x4444445
+    0.00 :   1905a:  lea    rdx,[rip+0x45b3f]        # 5eba0 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x118>
+    0.00 :   19061:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   19066:  mov    esi,0x4444445
+    0.00 :   1906b:  lea    rdx,[rip+0x45bee]        # 5ec60 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x1d8>
+    0.00 :   19072:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   19077:  mov    esi,0x4444445
+    0.00 :   1907c:  lea    rdx,[rip+0x45b05]        # 5eb88 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x100>
+    0.00 :   19083:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   19088:  mov    esi,0x4444445
+    0.00 :   1908d:  lea    rdx,[rip+0x45a34]        # 5eac8 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x40>
+    0.00 :   19094:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   19099:  mov    esi,0x4444445
+    0.00 :   1909e:  lea    rdx,[rip+0x45ba3]        # 5ec48 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x1c0>
+    0.00 :   190a5:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   190aa:  mov    esi,0x4444445
+    0.00 :   190af:  lea    rdx,[rip+0x45f52]        # 5f008 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x580>
+    0.00 :   190b6:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   190bb:  mov    esi,0x4444445
+    0.00 :   190c0:  lea    rdx,[rip+0x45d01]        # 5edc8 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x340>
+    0.00 :   190c7:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   190cc:  mov    esi,0x4444445
+    0.00 :   190d1:  lea    rdx,[rip+0x45db0]        # 5ee88 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x400>
+    0.00 :   190d8:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   190dd:  mov    esi,0x4444445
+    0.00 :   190e2:  lea    rdx,[rip+0x45c1f]        # 5ed08 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x280>
+    0.00 :   190e9:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   190ee:  mov    esi,0x4444445
+    0.00 :   190f3:  lea    rdx,[rip+0x45e4e]        # 5ef48 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x4c0>
+    0.00 :   190fa:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   190ff:  mov    esi,0x4444445
+    0.00 :   19104:  lea    rdx,[rip+0x45b25]        # 5ec30 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x1a8>
+    0.00 :   1910b:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   19110:  mov    esi,0x4444445
+    0.00 :   19115:  lea    rdx,[rip+0x45c94]        # 5edb0 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x328>
+    0.00 :   1911c:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   19121:  mov    esi,0x4444445
+    0.00 :   19126:  lea    rdx,[rip+0x45e03]        # 5ef30 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x4a8>
+    0.00 :   1912d:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   19132:  mov    esi,0x4444445
+    0.00 :   19137:  lea    rdx,[rip+0x45972]        # 5eab0 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x28>
+    0.00 :   1913e:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   19143:  mov    esi,0x4444445
+    0.00 :   19148:  lea    rdx,[rip+0x45ba1]        # 5ecf0 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x268>
+    0.00 :   1914f:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   19154:  mov    esi,0x4444445
+    0.00 :   19159:  lea    rdx,[rip+0x45e90]        # 5eff0 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x568>
+    0.00 :   19160:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   19165:  mov    esi,0x4444445
+    0.00 :   1916a:  lea    rdx,[rip+0x45cff]        # 5ee70 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0x3e8>
+    0.00 :   19171:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   19176:  mov    esi,0x4444445
+    0.00 :   1917b:  lea    rdx,[rip+0x459ee]        # 5eb70 <std::sys::args::unix::imp::ARGV_INIT_ARRAY+0xe8>
+    0.00 :   19182:  jmp    18d01 <presieve::main+0x18d1>
+    0.00 :   19187:  mov    edi,0x1
+    0.00 :   1918c:  mov    esi,0x10000
+    0.00 :   19191:  call   QWORD PTR [rip+0x48461]        # 615f8 <_DYNAMIC+0x2b0>
+    0.00 :   19197:  jmp    191df <presieve::main+0x1daf>
+    0.00 :   19199:  mov    edi,0x1
+    0.00 :   1919e:  mov    esi,0x4279
+    0.00 :   191a3:  call   QWORD PTR [rip+0x4844f]        # 615f8 <_DYNAMIC+0x2b0>
+    0.00 :   191a9:  jmp    191df <presieve::main+0x1daf>
+    0.00 :   191ab:  mov    edi,0x1
+    0.00 :   191b0:  mov    esi,0x4444445
+    0.00 :   191b5:  call   QWORD PTR [rip+0x4843d]        # 615f8 <_DYNAMIC+0x2b0>
+    0.00 :   191bb:  jmp    191df <presieve::main+0x1daf>
+    0.00 :   191bd:  mov    edi,0x1
+    0.00 :   191c2:  mov    esi,0xb505
+    0.00 :   191c7:  call   QWORD PTR [rip+0x4842b]        # 615f8 <_DYNAMIC+0x2b0>
+    0.00 :   191cd:  jmp    191df <presieve::main+0x1daf>
+    0.00 :   191cf:  mov    edi,0x4
+    0.00 :   191d4:  mov    rsi,QWORD PTR [rsp+0x8]
+    0.00 :   191d9:  call   QWORD PTR [rip+0x48419]        # 615f8 <_DYNAMIC+0x2b0>
+    0.00 :   191df:  ud2
+    0.00 :   191e1:  jmp    19260 <presieve::main+0x1e30>
+    0.00 :   191e3:  mov    r15,rax
+    0.00 :   191e6:  mov    r12,QWORD PTR [rsp]
+    0.00 :   191ea:  jmp    1929d <presieve::main+0x1e6d>
+    0.00 :   191ef:  mov    r15,rax
+         : 1924  }
+    0.00 :   191f2:  mov    rsi,QWORD PTR [rsp+0x48]
+    0.00 :   191f7:  test   rsi,rsi
+    0.00 :   191fa:  je     192bc <presieve::main+0x1e8c>
+    0.00 :   19200:  mov    rdi,QWORD PTR [rsp+0x50]
+    0.00 :   19205:  mov    edx,0x1
+    0.00 :   1920a:  jmp    192b6 <presieve::main+0x1e86>
+    0.00 :   1920f:  mov    r15,rax
+    0.00 :   19212:  jmp    192bc <presieve::main+0x1e8c>
+    0.00 :   19217:  mov    r15,rax
+    0.00 :   1921a:  jmp    192cf <presieve::main+0x1e9f>
+    0.00 :   1921f:  mov    r15,rax
+    0.00 :   19222:  dec    DWORD PTR [rbx+0xc]
+    0.00 :   19225:  jne    192ef <presieve::main+0x1ebf>
+    0.00 :   1922b:  mov    QWORD PTR [rbx],0x0
+    0.00 :   19232:  xor    eax,eax
+    0.00 :   19234:  xchg   DWORD PTR [rbx+0x8],eax
+    0.00 :   19237:  cmp    eax,0x2
+    0.00 :   1923a:  jne    192ef <presieve::main+0x1ebf>
+    0.00 :   19240:  add    rbx,0x8
+    0.00 :   19244:  mov    rdi,rbx
+    0.00 :   19247:  call   QWORD PTR [rip+0x48343]        # 61590 <_DYNAMIC+0x248>
+    0.00 :   1924d:  jmp    192ef <presieve::main+0x1ebf>
+    0.00 :   19252:  call   QWORD PTR [rip+0x48348]        # 615a0 <_DYNAMIC+0x258>
+    0.00 :   19258:  mov    r15,rax
+    0.00 :   1925b:  jmp    192e2 <presieve::main+0x1eb2>
+    0.00 :   19260:  mov    r15,rax
+    0.00 :   19263:  mov    esi,0x4444445
+    0.00 :   19268:  mov    edx,0x1
+    0.00 :   1926d:  mov    rdi,rbx
+    0.00 :   19270:  jmp    192dc <presieve::main+0x1eac>
+    0.00 :   19272:  mov    r15,rax
+    0.00 :   19275:  mov    esi,0xb505
+    0.00 :   1927a:  mov    edx,0x1
+    0.00 :   1927f:  jmp    192b3 <presieve::main+0x1e83>
+    0.00 :   19281:  mov    r15,rax
+    0.00 :   19284:  cmp    QWORD PTR [rsp+0x20],0x0
+    0.00 :   1928a:  je     1929d <presieve::main+0x1e6d>
+    0.00 :   1928c:  mov    edx,0x4
+    0.00 :   19291:  mov    rdi,rbp
+    0.00 :   19294:  mov    rsi,r13
+    0.00 :   19297:  call   QWORD PTR [rip+0x482fb]        # 61598 <_DYNAMIC+0x250>
+    0.00 :   1929d:  mov    rsi,QWORD PTR [rsp+0xe0]
+    0.00 :   192a5:  test   rsi,rsi
+    0.00 :   192a8:  je     192bc <presieve::main+0x1e8c>
+    0.00 :   192aa:  shl    rsi,0x3
+    0.00 :   192ae:  mov    edx,0x8
+    0.00 :   192b3:  mov    rdi,r12
+    0.00 :   192b6:  call   QWORD PTR [rip+0x482dc]        # 61598 <_DYNAMIC+0x250>
+    0.00 :   192bc:  mov    esi,0x4444445
+    0.00 :   192c1:  mov    edx,0x1
+    0.00 :   192c6:  mov    rdi,rbx
+    0.00 :   192c9:  call   QWORD PTR [rip+0x482c9]        # 61598 <_DYNAMIC+0x250>
+    0.00 :   192cf:  mov    esi,0x4279
+    0.00 :   192d4:  mov    edx,0x1
+    0.00 :   192d9:  mov    rdi,r14
+    0.00 :   192dc:  call   QWORD PTR [rip+0x482b6]        # 61598 <_DYNAMIC+0x250>
+    0.00 :   192e2:  lea    rdi,[rsp+0xb8]
+         : 1982  }
+    0.00 :   192ea:  call   173a0 <core::ptr::drop_in_place<std::io::buffered::bufwriter::BufWriter<std::io::stdio::StdoutLock>>>
+    0.00 :   192ef:  mov    rdi,r15
+    0.00 :   192f2:  call   5da50 <_Unwind_Resume@plt>
+         : 1986  fn main() -> io::Result<()> {
+    0.00 :   192f7:  call   QWORD PTR [rip+0x482a3]        # 615a0 <_DYNAMIC+0x258>
+ Percent |	Source code & Disassembly of presieve for cpu/cycles/Pu (12 samples, percent: local period)
+-----------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3     Disassembly of section .text:
+         :
+         : 5     000000000005c920 <core::slice::memchr::memrchr>:
+    0.00 :   5c920:  push   rbp
+    0.00 :   5c921:  mov    rbp,rsp
+    0.00 :   5c924:  push   r15
+    0.00 :   5c926:  push   r14
+    0.00 :   5c928:  push   rbx
+    0.00 :   5c929:  push   rax
+    0.00 :   5c92a:  lea    r8,[rsi+0x7]
+    0.00 :   5c92e:  and    r8,0xfffffffffffffff8
+    0.00 :   5c932:  sub    r8,rsi
+    0.00 :   5c935:  mov    rax,rdx
+    0.00 :   5c938:  mov    rcx,rdx
+    0.00 :   5c93b:  cmp    rdx,r8
+    0.00 :   5c93e:  jb     5c957 <core::slice::memchr::memrchr+0x37>
+    0.00 :   5c940:  mov    ecx,edx
+    0.00 :   5c942:  sub    ecx,r8d
+    0.00 :   5c945:  and    ecx,0xf
+    0.00 :   5c948:  mov    rax,rdx
+    0.00 :   5c94b:  sub    rax,rcx
+    0.00 :   5c94e:  jb     5ca1a <core::slice::memchr::memrchr+0xfa>
+    0.00 :   5c954:  mov    rcx,r8
+    0.00 :   5c957:  mov    r9,rax
+    0.00 :   5c95a:  neg    r9
+    0.00 :   5c95d:  mov    r10,rdx
+    0.00 :   5c960:  mov    r8,r9
+    0.00 :   5c963:  add    r8,r10
+    0.00 :   5c966:  je     5c978 <core::slice::memchr::memrchr+0x58>
+    0.00 :   5c968:  lea    r8,[r10-0x1]
+    0.00 :   5c96c:  cmp    BYTE PTR [rsi+r10*1-0x1],dil
+    0.00 :   5c971:  mov    r10,r8
+    0.00 :   5c974:  jne    5c960 <core::slice::memchr::memrchr+0x40>
+    0.00 :   5c976:  jmp    5c9f3 <core::slice::memchr::memrchr+0xd3>
+    0.00 :   5c978:  movabs r8,0x8080808080808080
+    0.00 :   5c982:  movabs r10,0x101010101010100
+    0.00 :   5c98c:  movzx  r9d,dil
+    0.00 :   5c990:  lea    r11,[r10+0x1]
+    0.00 :   5c994:  imul   r11,r9
+    0.00 :   5c998:  nop    DWORD PTR [rax+rax*1+0x0]
+    0.00 :   5c9a0:  mov    r9,rax
+    0.00 :   5c9a3:  cmp    rax,rcx
+    0.00 :   5c9a6:  jbe    5c9d9 <core::slice::memchr::memrchr+0xb9>
+    0.00 :   5c9a8:  lea    rax,[r9-0x10]
+   49.99 :   5c9ac:  mov    rbx,QWORD PTR [rsi+r9*1-0x10]
+    0.00 :   5c9b1:  xor    rbx,r11
+    0.00 :   5c9b4:  mov    r14,r10
+    0.00 :   5c9b7:  sub    r14,rbx
+   16.66 :   5c9ba:  or     r14,rbx
+    0.00 :   5c9bd:  mov    rbx,QWORD PTR [rsi+r9*1-0x8]
+    0.00 :   5c9c2:  xor    rbx,r11
+    0.00 :   5c9c5:  mov    r15,r10
+   16.66 :   5c9c8:  sub    r15,rbx
+    0.00 :   5c9cb:  or     r15,rbx
+    0.00 :   5c9ce:  and    r14,r8
+    0.00 :   5c9d1:  and    r14,r15
+    0.00 :   5c9d4:  cmp    r14,r8
+   16.68 :   5c9d7:  je     5c9a0 <core::slice::memchr::memrchr+0x80>
+    0.00 :   5c9d9:  cmp    r9,rdx
+    0.00 :   5c9dc:  ja     5ca08 <core::slice::memchr::memrchr+0xe8>
+    0.00 :   5c9de:  xor    eax,eax
+    0.00 :   5c9e0:  test   r9,r9
+    0.00 :   5c9e3:  je     5c9fa <core::slice::memchr::memrchr+0xda>
+    0.00 :   5c9e5:  lea    r8,[r9-0x1]
+    0.00 :   5c9e9:  cmp    BYTE PTR [rsi+r9*1-0x1],dil
+    0.00 :   5c9ee:  mov    r9,r8
+    0.00 :   5c9f1:  jne    5c9e0 <core::slice::memchr::memrchr+0xc0>
+    0.00 :   5c9f3:  mov    eax,0x1
+    0.00 :   5c9f8:  jmp    5c9fa <core::slice::memchr::memrchr+0xda>
+    0.00 :   5c9fa:  mov    rdx,r8
+    0.00 :   5c9fd:  add    rsp,0x8
+    0.00 :   5ca01:  pop    rbx
+    0.00 :   5ca02:  pop    r14
+    0.00 :   5ca04:  pop    r15
+    0.00 :   5ca06:  pop    rbp
+    0.00 :   5ca07:  ret
+    0.00 :   5ca08:  lea    rcx,[rip+0x4859]        # 61268 <anon.fb86d38527920b87f7f4bd8486a83c1c.2.llvm.1850395187724313090+0x2140>
+    0.00 :   5ca0f:  xor    edi,edi
+    0.00 :   5ca11:  mov    rsi,r9
+    0.00 :   5ca14:  call   QWORD PTR [rip+0x4c6e]        # 61688 <_DYNAMIC+0x340>
+    0.00 :   5ca1a:  lea    rcx,[rip+0x485f]        # 61280 <anon.fb86d38527920b87f7f4bd8486a83c1c.2.llvm.1850395187724313090+0x2158>
+    0.00 :   5ca21:  mov    rdi,rax
+    0.00 :   5ca24:  mov    rsi,rdx
+    0.00 :   5ca27:  call   QWORD PTR [rip+0x4c5b]        # 61688 <_DYNAMIC+0x340>
+ Percent |	Source code & Disassembly of ld-linux-x86-64.so.2 for cpu/cycles/Pu (1 samples, percent: local period)
+----------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3     Disassembly of section .text:
+         :
+         : 5     000000000001eea0 <version_check_doit>:
+  100.00 :   1eea0:  endbr64
+    0.00 :   1eea4:  push   rbx
+    0.00 :   1eea5:  mov    rbx,rdi
+    0.00 :   1eea8:  mov    edx,DWORD PTR [rdi+0x4]
+    0.00 :   1eeab:  mov    esi,0x1
+    0.00 :   1eeb0:  mov    rdi,QWORD PTR [rip+0x18149]        # 37000 <_rtld_global>
+    0.00 :   1eeb7:  call   15370 <_dl_check_all_versions>
+    0.00 :   1eebc:  test   eax,eax
+    0.00 :   1eebe:  je     1eec6 <version_check_doit+0x26>
+    0.00 :   1eec0:  mov    eax,DWORD PTR [rbx]
+    0.00 :   1eec2:  test   eax,eax
+    0.00 :   1eec4:  jne    1eed0 <version_check_doit+0x30>
+    0.00 :   1eec6:  pop    rbx
+    0.00 :   1eec7:  ret
+    0.00 :   1eec8:  nop    DWORD PTR [rax+rax*1+0x0]
+    0.00 :   1eed0:  mov    edi,0x1
+    0.00 :   1eed5:  pop    rbx
+    0.00 :   1eed6:  jmp    24a50 <_Exit>
+ Percent |	Source code & Disassembly of libc.so.6 for cpu/cycles/Pu (1 samples, percent: local period)
+-----------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3     Disassembly of section .text:
+         :
+         : 5     00000000000bdea0 <wcscat@@GLIBC_2.2.5>:
+    0.00 :   bdea0:  endbr64
+    0.00 :   bdea4:  mov    rcx,QWORD PTR [rip+0x123ffd]        # 1e1ea8 <_rtld_global_ro@GLIBC_PRIVATE>
+    0.00 :   bdeab:  lea    rdx,[rip+0x1047e]        # ce330 <wcstof128@@GLIBC_2.26+0x1c0>
+    0.00 :   bdeb2:  mov    esi,DWORD PTR [rcx+0xb8]
+    0.00 :   bdeb8:  not    esi
+    0.00 :   bdeba:  test   esi,0x120
+    0.00 :   bdec0:  je     bded0 <wcscat@@GLIBC_2.2.5+0x30>
+    0.00 :   bdec2:  mov    rax,rdx
+    0.00 :   bdec5:  ret
+    0.00 :   bdec6:  cs nop WORD PTR [rax+rax*1+0x0]
+  100.00 :   bded0:  mov    ecx,DWORD PTR [rcx+0x1c4]
+    0.00 :   bded6:  test   ch,0x2
+    0.00 :   bded9:  je     bdec2 <wcscat@@GLIBC_2.2.5+0x22>
+    0.00 :   bdedb:  and    esi,0xc0000000
+    0.00 :   bdee1:  je     bdf00 <wcscat@@GLIBC_2.2.5+0x60>
+    0.00 :   bdee3:  and    ch,0x8
+    0.00 :   bdee6:  lea    rax,[rip+0x10443]        # ce330 <wcstof128@@GLIBC_2.26+0x1c0>
+    0.00 :   bdeed:  lea    rdx,[rip+0xa9e5c]        # 167d50 <_dl_mcount_wrapper@GLIBC_2.2.5+0x6060>
+    0.00 :   bdef4:  cmovne rdx,rax
+    0.00 :   bdef8:  mov    rax,rdx
+    0.00 :   bdefb:  ret
+    0.00 :   bdefc:  nop    DWORD PTR [rax+0x0]
+    0.00 :   bdf00:  lea    rdx,[rip+0xba379]        # 178280 <_dl_mcount_wrapper@GLIBC_2.2.5+0x16590>
+    0.00 :   bdf07:  jmp    bdec2 <wcscat@@GLIBC_2.2.5+0x22>
