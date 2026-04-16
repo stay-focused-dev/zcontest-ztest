@@ -16,6 +16,7 @@
 | sw_prefetch              |  0.821 s ± 0.001 s  | 15.1×    |
 | l1_cache                 |  0.800 s ± 0.001 s  | 15.5×    |
 | presieve                 |  0.758 s ± 0.001 s  | 16.4×    |
+| smart_presieve           |  0.634 s ± 0.001 s  | 19.6×    |
 
 ### Instructions (perf stat)
 
@@ -31,6 +32,7 @@
 | sw_prefetch              |  6,738,319,414     | 2.0        |
 | l1_cache                 |  6,769,972,265     | 2.1        |
 | presieve                 |  5,675,493,316     | 1.9        |
+| smart_presieve           |  4,034,881,598     | 1.6        |
 
 ### Cache hit rates (mem_load_retired.*)
 
@@ -46,6 +48,7 @@
 | sw_prefetch              | 65.1 %  | 99.6 %  | 100.0 % |         234 |
 | l1_cache                 | 88.2 %  | 87.7 %  | 100.0 % |         988 |
 | presieve                 | 69.7 %  | 98.0 %  | 100.0 % |         150 |
+| smart_presieve           | 57.9 %  | 95.7 %  | 100.0 % |         225 |
 
 ## Apple M1
 
@@ -63,3 +66,4 @@
 | sw_prefetch              |  0.484 s ± 0.002 s  | 18.5×    |
 | l1_cache                 |  0.525 s ± 0.002 s  | 17.1×    |
 | presieve                 |  0.469 s ± 0.002 s  | 19.1×    |
+| smart_presieve           |  0.392 s ± 0.002 s  | 22.9×    |
