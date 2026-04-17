@@ -1,3 +1,3 @@
 [workspace]
-members = ["l1_cache", "l1_cache_find_first_l2_prime", "loop11","naive", "presieve", "segmented", "segmented_wheel235", "segmented_wheel235_div", "smart_presieve", "smart_presieve_find_optimal_chunk", "sw_prefetch", "unrolled", "wheel235"]
+members = ["huge_pages","l1_cache", "l1_cache_find_first_l2_prime", "loop11","naive", "presieve", "segmented", "segmented_wheel235", "segmented_wheel235_div", "smart_presieve", "smart_presieve_find_optimal_chunk", "sw_prefetch", "unrolled", "wheel235"]
 resolver = "3"

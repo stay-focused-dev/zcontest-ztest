@@ -3,12 +3,25 @@
 version = 4
 
 [[package]]
+name = "huge_pages"
+version = "0.1.0"
+dependencies = [
+ "libc",
+]
+
+[[package]]
 name = "l1_cache"
 version = "0.1.0"
 
 [[package]]
 name = "l1_cache_find_first_l2_prime"
 version = "0.1.0"
+
+[[package]]
+name = "libc"
+version = "0.2.185"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "52ff2c0fe9bc6cb6b14a0592c2ff4fa9ceb83eea9db979b0487cd054946a2b8f"
 
 [[package]]
 name = "loop11"
