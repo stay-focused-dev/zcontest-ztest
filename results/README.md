@@ -19,6 +19,7 @@
 | smart_presieve           |  0.634 s ± 0.001 s  | 19.6×    |
 | loop11                   |  0.610 s ± 0.001 s  | 20.3×    |
 | huge_pages               |  0.521 s ± 0.001 s  | 23.8×    |
+| first_presieve           |  0.521 s ± 0.001 s  | 23.8×    |
 
 ### Instructions (perf stat)
 
@@ -37,6 +38,7 @@
 | smart_presieve           |  4,034,881,598     | 1.6        |
 | loop11                   |  2,178,944,588     | 0.9        |
 | huge_pages               |  2,154,837,842     | 1.0        |
+| first_presieve           |  2,158,589,486     | 1.0        |
 
 ### Cache hit rates (mem_load_retired.*)
 
@@ -55,6 +57,7 @@
 | smart_presieve           | 57.9 %  | 95.7 %  | 100.0 % |         225 |
 | loop11                   | 52.4 %  | 96.9 %  | 100.0 % |         647 |
 | huge_pages               | 54.1 %  | 99.9 %  |  61.9 % |     119,049 |
+| first_presieve           | 55.4 %  | 99.9 %  |  99.7 % |         713 |
 
 ## Apple M1
 
@@ -75,3 +78,4 @@
 | smart_presieve           |  0.392 s ± 0.002 s  | 22.9×    |
 | loop11                   |  0.329 s ± 0.002 s  | 27.3×    |
 | huge_pages               |  0.331 s ± 0.003 s  | 27.1×    |
+| first_presieve           |  0.327 s ± 0.002 s  | 27.4×    |
