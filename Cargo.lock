@@ -21,6 +21,13 @@ name = "l1_cache"
 version = "0.1.0"
 
 [[package]]
+name = "l1_cache_again"
+version = "0.1.0"
+dependencies = [
+ "libc",
+]
+
+[[package]]
 name = "l1_cache_find_first_l2_prime"
 version = "0.1.0"
 
