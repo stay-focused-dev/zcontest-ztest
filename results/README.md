@@ -21,6 +21,7 @@
 | huge_pages               |  0.521 s ± 0.001 s  | 23.8×    |
 | first_presieve           |  0.521 s ± 0.001 s  | 23.8×    |
 | l1_cache_again           |  0.449 s ± 0.000 s  | 27.6×    |
+| branch_opt               |  0.440 s ± 0.001 s  | 28.2×    |
 
 ### Instructions (perf stat)
 
@@ -41,6 +42,7 @@
 | huge_pages               |  2,154,837,842     | 1.0        |
 | first_presieve           |  2,158,589,486     | 1.0        |
 | l1_cache_again           |  2,168,859,674     | 1.2        |
+| branch_opt               |  2,216,253,197     | 1.2        |
 
 ### Cache hit rates (mem_load_retired.*)
 
@@ -61,6 +63,7 @@
 | huge_pages               | 54.1 %  | 99.9 %  |  61.9 % |     119,049 |
 | first_presieve           | 55.4 %  | 99.9 %  |  99.7 % |         713 |
 | l1_cache_again           | 82.8 %  | 98.4 %  |  98.9 % |      19,618 |
+| branch_opt               | 84.5 %  | 98.6 %  |  99.2 % |      12,660 |
 
 ## Apple M1
 
@@ -83,3 +86,4 @@
 | huge_pages               |  0.331 s ± 0.003 s  | 27.1×    |
 | first_presieve           |  0.327 s ± 0.002 s  | 27.4×    |
 | l1_cache_again           |  0.349 s ± 0.001 s  | 25.7×    |
+| branch_opt               |  0.341 s ± 0.002 s  | 26.3×    |
